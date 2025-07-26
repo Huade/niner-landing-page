@@ -1,0 +1,121 @@
+.problem {
+  padding: var(--spacing-3xl) 0;
+  background-color: var(--color-gray-50);
+}
+
+.section-title {
+  font-size: var(--font-size-4xl);
+  text-align: center;
+  color: var(--color-gray-900);
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+  font-weight: var(--font-weight-bold);
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--color-blue);
+  margin: var(--spacing-base) auto 0;
+  border-radius: 2px;
+}
+
+.crisis-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+  margin-top: var(--spacing-2xl);
+}
+
+.crisis-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2xl);
+  padding: var(--spacing-xl) 0;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.crisis-item:last-child {
+  border-bottom: none;
+}
+
+.crisis-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.crisis-visual {
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.crisis-visual svg {
+  width: 100%;
+  height: auto;
+}
+
+.crisis-visual img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-card);
+}
+
+.crisis-content {
+  flex: 1;
+  text-align: left;
+}
+
+.crisis-item:nth-child(even) .crisis-content {
+  text-align: right;
+}
+
+.crisis-content h3 {
+  font-size: var(--font-size-3xl);
+  color: var(--color-gray-900);
+  margin-bottom: var(--spacing-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+.crisis-stat {
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-blue);
+  margin-bottom: var(--spacing-base);
+  display: block;
+}
+
+.crisis-desc {
+  font-size: var(--font-size-lg);
+  color: var(--color-gray-600);
+  line-height: 1.6;
+}
+
+@media (max-width: 740px) {
+  .crisis-item {
+    flex-direction: column !important;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg) 0;
+    text-align: center;
+  }
+  
+  .crisis-content {
+    text-align: center !important;
+  }
+  
+  .crisis-visual {
+    max-width: 100%;
+  }
+  
+  .crisis-content h3 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .crisis-stat {
+    font-size: var(--font-size-5xl);
+  }
+}

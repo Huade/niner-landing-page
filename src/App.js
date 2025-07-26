@@ -1,0 +1,27 @@
+import React from 'react';
+import './App.css';
+import Navigation from './components/Navigation';
+import Hero from './components/Hero';
+import Results from './components/Results';
+import Problem from './components/Problem';
+import Solution from './components/Solution';
+import Industries from './components/Industries';
+import Team from './components/Team';
+import Footer from './components/Footer';
+
+function App() {
+  return (
+    <div className="App">
+      <Navigation />
+      <Hero />
+      <Results />
+      <Problem />
+      <Solution />
+      <Industries />
+      <Team />
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
