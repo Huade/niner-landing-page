@@ -5,15 +5,21 @@ const Hero = () => {
   return (
     <section className="hero">
       <div className="container">
-        <h1 className="hero-title">The Future of Surveys is Here</h1>
+        <div className="hero-eyebrow">
+          <svg className="problem-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          The Future of Survey Intelligence
+        </div>
+        <h1 className="hero-title">Conversations that reveal
+        what people really think</h1>
         <p className="hero-subtitle">
-          While traditional polling struggles with 1% response rates and fixed questions, 
-          Niner Research combines revolutionary sampling methods with AI-powered chatbots 
-          to deliver unprecedented accuracy and deep insights.
+        Traditional surveys are broken. 1% response rates. Fixed questions. 
+        Biased results. Niner Research uses AI-powered conversations 
+        to understand populations like never before.
         </p>
         <div className="hero-cta">
-          <button className="btn btn-primary">Get Started</button>
-          <button className="btn btn-secondary">Learn More</button>
+          <button className="btn btn-primary">Request a Demo</button>
         </div>
       </div>
     </section>

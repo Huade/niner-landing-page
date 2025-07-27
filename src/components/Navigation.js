@@ -21,7 +21,7 @@ const Navigation = () => {
         <div className="nav-logo">
           <svg width="220" height="40" viewBox="0 0 220 40" xmlns="http://www.w3.org/2000/svg">
             <g transform="translate(110, 25)">
-              <text x="0" y="0" fontFamily="Helvetica Neue, sans-serif" fontSize="18" fontWeight="200" fill="currentColor" textAnchor="middle" letterSpacing="3">NINER RESEARCH</text>
+              <text x="0" y="0" fontFamily="Helvetica Neue, sans-serif" fontSize="18" fontWeight="500" fill="currentColor" textAnchor="middle" letterSpacing="3">NINER RESEARCH</text>
             </g>
           </svg>
         </div>
@@ -31,7 +31,8 @@ const Navigation = () => {
           <a href="#solution" onClick={() => setMobileMenuOpen(false)}>Solution</a>
           <a href="#industries" onClick={() => setMobileMenuOpen(false)}>Industries</a>
           <a href="#team" onClick={() => setMobileMenuOpen(false)}>Team</a>
-          <a href="#contact" className="nav-cta" onClick={() => setMobileMenuOpen(false)}>Get Started</a>
+          <a href="#faq" onClick={() => setMobileMenuOpen(false)}>FAQ</a>
+          <a href="#contact" className="nav-cta" style={{padding: '12px 100px'}} onClick={() => setMobileMenuOpen(false)}>Request a Demo</a>
         </div>
         
         <button 
