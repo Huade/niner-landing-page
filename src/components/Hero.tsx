@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
 const Hero: React.FC = () => {
@@ -6,11 +6,21 @@ const Hero: React.FC = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const badgesRef = useRef<HTMLDivElement>(null);
+  const [currentBadgeIndex, setCurrentBadgeIndex] = useState(0);
+
+  const badges = [
+    "Published Research • Proven Methodology",
+    "Georgetown University • McCourt School of Public Policy",
+    "AI-Powered • Scientifically Validated",
+    "Real-Time Results • Deeper Insights",
+    "Political Analysis 2025 • Cambridge University Press"
+  ];
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    gsap.set([titleRef.current, subtitleRef.current, ctaRef.current], {
+    gsap.set([titleRef.current, subtitleRef.current, ctaRef.current, badgesRef.current], {
       opacity: 0,
       y: 30
     });
@@ -30,7 +40,12 @@ const Hero: React.FC = () => {
       opacity: 1,
       y: 0,
       duration: 0.8
-    }, "-=0.4");
+    }, "-=0.4")
+    .to(badgesRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6
+    }, "-=0.2");
 
     const buttons = ctaRef.current?.querySelectorAll('button');
     buttons?.forEach(button => {
@@ -51,15 +66,23 @@ const Hero: React.FC = () => {
       });
     });
 
+
+    // Badge rotation with fade effect for consistent direction
+    const badgeInterval = setInterval(() => {
+      setCurrentBadgeIndex((prev) => (prev + 1) % badges.length);
+    }, 5000);
+
     return () => {
       tl.kill();
+      clearInterval(badgeInterval);
     };
-  }, []);
+  }, [badges.length]);
 
 
   return (
     <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
+      
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 ref={titleRef} className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
@@ -89,10 +112,21 @@ const Hero: React.FC = () => {
           </button>
         </div>
         
-        <div className="mt-8 text-sm text-gray-400">
-          Published Research • Proven Methodology
+        <div ref={badgesRef} className="mt-8 h-6 relative">
+          {badges.map((badge, index) => (
+            <div 
+              key={index} 
+              className={`absolute inset-0 text-sm text-gray-400 h-6 flex items-center justify-center transition-opacity duration-700 ${
+                currentBadgeIndex === index ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              {badge}
+            </div>
+          ))}
         </div>
+        
       </div>
+      
     </section>
   );
 };

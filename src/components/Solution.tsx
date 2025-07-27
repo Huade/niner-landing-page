@@ -1,350 +1,667 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Counter display component
+const CounterDisplay: React.FC<{ end: number; duration?: number; trigger: HTMLElement | null }> = ({ 
+  end, 
+  duration = 2000, 
+  trigger 
+}) => {
+  const [count, setCount] = useState(0);
+  
+  useEffect(() => {
+    if (!trigger) return;
+    
+    let startTime: number | null = null;
+    let animationFrame: number;
+    
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      
+      setCount(Math.floor(progress * end));
+      
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+    
+    const scrollTrigger = ScrollTrigger.create({
+      trigger,
+      start: "top 80%",
+      onEnter: () => {
+        animationFrame = requestAnimationFrame(animate);
+      },
+      once: true
+    });
+    
+    return () => {
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+      scrollTrigger.kill();
+    };
+  }, [end, duration, trigger]);
+  
+  return <span>{count}</span>;
+};
 
 const Solution: React.FC = () => {
-  return (
-    <section id="solution" className="py-24 bg-white relative overflow-hidden">
-      <div className="absolute -top-1/2 -right-1/5 w-2/5 h-[150%] bg-gradient-radial from-blue-500/5 to-transparent pointer-events-none"></div>
-      
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-16">The Niner Breakthrough</h2>
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const blocksRef = useRef<HTMLDivElement[]>([]);
+  const conversationRef = useRef<HTMLDivElement>(null);
+  const [expandedSection, setExpandedSection] = useState<number | null>(null);
+
+  useEffect(() => {
+    const blocks = blocksRef.current;
+    
+    blocks.forEach((block, index) => {
+      if (block) {
+        // Main block animation
+        gsap.fromTo(block,
+          {
+            opacity: 0,
+            y: 50,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: block,
+              start: "top 85%",
+              toggleActions: "play none none reverse"
+            },
+            delay: index * 0.2
+          }
+        );
         
-        <div className="flex flex-col gap-0 mt-8 w-full">
-          {/* Revolutionary Sampling Feature */}
-          <div className="pb-8 mb-8 relative last:pb-0 last:mb-0">
-            <div className="flex-1 text-left">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white text-2xl flex-shrink-0 transition-all hover:scale-110 hover:shadow-lg">
-                  <i className="fas fa-chart-line"></i>
-                </div>
-                <h4 className="text-2xl text-gray-900 font-semibold">Revolutionary Sampling</h4>
-              </div>
-              <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                Traditional polling is broken. With response rates below 5%, the people who answer surveys are fundamentally different from those who don't—and demographic weighting can't fix this. Our breakthrough applies the Meng equation to reveal and correct these hidden biases.
-              </p>
-              
-              <div className="my-12 p-8 bg-gradient-to-br from-blue-600/5 to-blue-600/5 rounded-2xl border border-blue-600/15 shadow-sm hover:shadow-md transition-all">
-                <svg viewBox="0 0 900 220" className="w-full h-auto max-w-4xl mx-auto block" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="equationGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" style={{stopColor: '#34699A', stopOpacity: 0.1}}/>
-                      <stop offset="50%" style={{stopColor: '#34699A', stopOpacity: 0.05}}/>
-                      <stop offset="100%" style={{stopColor: '#34699A', stopOpacity: 0.1}}/>
-                    </linearGradient>
-                    <filter id="textShadow">
-                      <feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
-                      <feOffset dx="0" dy="1" result="offsetblur"/>
-                      <feFlood floodColor="#000000" floodOpacity="0.1"/>
-                      <feComposite in2="offsetblur" operator="in"/>
-                      <feMerge>
-                        <feMergeNode/>
-                        <feMergeNode in="SourceGraphic"/>
-                      </feMerge>
-                    </filter>
-                  </defs>
-                  
-                  {/* Background */}
-                  <rect x="0" y="0" width="900" height="220" fill="url(#equationGradient)" rx="8" opacity="0.3"/>
-                  
-                  {/* Main equation - left side */}
-                  <g filter="url(#textShadow)">
-                    <text x="50" y="90" fontFamily="Georgia, serif" fontSize="36" fill="#2d3748" fontWeight="500">
-                      <tspan fontStyle="italic">Ȳ</tspan>
-                      <tspan dx="2" fontSize="26" dy="6" fill="#4a5568">n</tspan>
-                      <tspan dx="20" dy="-6" fontSize="36" fill="#2d3748">−</tspan>
-                      <tspan dx="20" fontStyle="italic" fill="#2d3748">Ȳ</tspan>
-                      <tspan dx="2" fontSize="26" dy="6" fill="#4a5568">N</tspan>
-                      <tspan dx="35" dy="-6" fontSize="40" fill="#000000" fontWeight="500">=</tspan>
-                    </text>
-                  </g>
-                  
-                  {/* Three components with elegant underbraces */}
-                  
-                  {/* Component 1: rho_R,Y */}
-                  <g transform="translate(270, 0)">
-                    <text x="0" y="90" fontFamily="Georgia, serif" fontSize="32" fill="#2d3748" filter="url(#textShadow)">
-                      <tspan fontStyle="italic" fontWeight="500">ρ</tspan>
-                      <tspan fontSize="22" dy="6" fill="#4a5568">R,Y</tspan>
-                    </text>
-                    <path d="M -20 110 Q 25 130 70 110" stroke="#34699A" strokeWidth="2" fill="none" opacity="0.6"/>
-                    <text x="25" y="150" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#34699A" textAnchor="middle" fontWeight="500">
-                      data defect
-                    </text>
-                    <text x="25" y="166" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#34699A" textAnchor="middle" fontWeight="500">
-                      correlation
-                    </text>
-                  </g>
-                  
-                  {/* Times symbol */}
-                  <text x="370" y="90" fontFamily="Georgia, serif" fontSize="32" fill="#4a5568" opacity="0.7">×</text>
-                  
-                  {/* Component 2: Square root fraction */}
-                  <g transform="translate(420, 45)">
-                    {/* Square root symbol with smoother curve */}
-                    <path d="M 0 35 L 8 55 L 15 15 Q 17 10 22 10 L 130 10" stroke="#2d3748" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                    
-                    {/* Fraction */}
-                    <g transform="translate(25, 0)">
-                      {/* Numerator */}
-                      <text x="50" y="35" fontFamily="Georgia, serif" fontSize="26" fill="#2d3748" textAnchor="middle">
-                        <tspan fontStyle="italic">N</tspan>
-                        <tspan dx="8" fill="#4a5568">−</tspan>
-                        <tspan dx="8" fontStyle="italic">n</tspan>
-                      </text>
-                      {/* Fraction bar */}
-                      <line x1="10" y1="48" x2="90" y2="48" stroke="#2d3748" strokeWidth="1.8"/>
-                      {/* Denominator */}
-                      <text x="50" y="75" fontFamily="Georgia, serif" fontSize="26" fontStyle="italic" fill="#2d3748" textAnchor="middle">n</text>
-                    </g>
-                    
-                    {/* Underbrace */}
-                    <path d="M -10 65 Q 65 85 140 65" stroke="#34699A" strokeWidth="2" fill="none" opacity="0.6" transform="translate(0, 40)"/>
-                    <text x="65" y="145" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#34699A" textAnchor="middle" fontWeight="500">
-                      data quantity
-                    </text>
-                  </g>
-                  
-                  {/* Times symbol */}
-                  <text x="590" y="90" fontFamily="Georgia, serif" fontSize="32" fill="#4a5568" opacity="0.7">×</text>
-                  
-                  {/* Component 3: sigma_Y */}
-                  <g transform="translate(640, 0)">
-                    <text x="0" y="90" fontFamily="Georgia, serif" fontSize="32" fill="#2d3748" filter="url(#textShadow)">
-                      <tspan fontStyle="italic" fontWeight="500">σ</tspan>
-                      <tspan fontSize="22" dy="6" fill="#4a5568">Y</tspan>
-                    </text>
-                    <path d="M -15 110 Q 20 130 55 110" stroke="#34699A" strokeWidth="2" fill="none" opacity="0.6"/>
-                    <text x="20" y="150" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#34699A" textAnchor="middle" fontWeight="500">
-                      data
-                    </text>
-                    <text x="20" y="166" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#34699A" textAnchor="middle" fontWeight="500">
-                      difficulty
-                    </text>
-                  </g>
-                  
-                  {/* Decorative elements */}
-                  <circle cx="850" cy="90" r="3" fill="#34699A" opacity="0.3"/>
-                  <circle cx="860" cy="95" r="2" fill="#34699A" opacity="0.2"/>
-                  <circle cx="855" cy="85" r="2" fill="#34699A" opacity="0.2"/>
-                </svg>
+        // Arrow animation
+        const arrow = block.querySelector('.transform-arrow');
+        if (arrow) {
+          gsap.to(arrow, {
+            x: 10,
+            duration: 1.5,
+            repeat: -1,
+            yoyo: true,
+            ease: "power1.inOut",
+            scrollTrigger: {
+              trigger: block,
+              start: "top 80%",
+              toggleActions: "play pause resume pause"
+            }
+          });
+        }
+        
+        // Particle animation
+        const particles = block.querySelectorAll('.particle');
+        particles.forEach((particle, i) => {
+          gsap.to(particle, {
+            x: 40,
+            opacity: 0,
+            duration: 2,
+            repeat: -1,
+            delay: i * 0.3,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: block,
+              start: "top 80%",
+              toggleActions: "play pause resume pause"
+            }
+          });
+        });
+      }
+    });
+
+    // Conversation animation
+    if (conversationRef.current) {
+      const messages = conversationRef.current.querySelectorAll('.message');
+      const typingIndicator = conversationRef.current.parentElement?.querySelector('.typing-indicator');
+      
+      // Initially hide all messages and typing indicator
+      gsap.set(messages, { opacity: 0, y: 20 });
+      if (typingIndicator) {
+        gsap.set(typingIndicator, { opacity: 0, y: 10 });
+      }
+      
+      // Create scroll trigger for conversation
+      ScrollTrigger.create({
+        trigger: conversationRef.current,
+        start: "top 80%",
+        onEnter: () => {
+          const tl = gsap.timeline();
+          
+          // Animate messages first
+          tl.to(messages, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.8,
+            ease: "power2.out"
+          });
+          
+          // Then show typing indicator after all messages
+          if (typingIndicator) {
+            tl.to(typingIndicator, {
+              opacity: 1,
+              y: 0,
+              duration: 0.4,
+              ease: "power2.out"
+            }, "+=0.3");
+          }
+        },
+        once: true
+      });
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
+  const toggleExpand = (index: number) => {
+    setExpandedSection(expandedSection === index ? null : index);
+  };
+
+  return (
+    <section id="solution" className="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden" ref={sectionRef}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+            The Niner Breakthrough
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Three innovations that fix polling forever
+          </p>
+        </div>
+        
+        <div className="space-y-20">
+          {/* Feature 1: Natural Conversations */}
+          <div 
+            ref={(el) => { if (el) blocksRef.current[0] = el; }}
+            className="relative"
+          >
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="p-8 lg:p-12">
+                <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Natural Conversations</h3>
                 
-                <div className="mt-8 text-center">
-                  <p className="text-lg font-semibold text-blue-600 mb-2 tracking-tight">The Meng Equation for Non-Response Bias</p>
-                  <p className="text-base text-gray-700 leading-relaxed max-w-2xl mx-auto">
-                    This fundamental equation reveals how survey bias emerges from three critical factors: the correlation between response tendency and the outcome of interest, the proportion of missing responses, and the inherent variability in the population.
+                {/* Natural Conversations Content */}
+                <div className="max-w-3xl mx-auto">
+                  <div className="text-center mb-8">
+                    <div className="inline-block p-6 bg-blue-50 rounded-2xl mb-4">
+                      <svg className="w-16 h-16 mx-auto text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                      </svg>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-2xl font-bold text-blue-600">AI-Powered Conversations</p>
+                      <p className="text-lg text-gray-600">Natural dialogue that adapts to each respondent</p>
+                    </div>
+                  </div>
+                  
+                  {/* Conversation Demo */}
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl shadow-inner max-w-lg mx-auto">
+                    <div className="max-w-sm mx-auto space-y-3 conversation-container" ref={conversationRef}>
+                      <div className="message bg-blue-600 text-white px-4 py-3 rounded-2xl rounded-tl-md text-sm shadow-md max-w-[85%]">
+                        Hi! I'm Polly. I'm here to learn about your views on government spending. What's your take on the current budget?
+                      </div>
+                      <div className="message bg-white text-gray-800 px-4 py-3 rounded-2xl rounded-tr-md text-sm shadow-md max-w-[85%] ml-auto">
+                        honestly its crazy high. we're spending money we don't have
+                      </div>
+                      <div className="message bg-blue-600 text-white px-4 py-3 rounded-2xl rounded-tl-md text-sm shadow-md max-w-[85%]">
+                        I hear you - spending beyond our means is concerning. What specific areas do you think are most wasteful?
+                      </div>
+                      <div className="message bg-white text-gray-800 px-4 py-3 rounded-2xl rounded-tr-md text-sm shadow-md max-w-[85%] ml-auto">
+                        foreign aid while we have homeless vets. infrastructure falling apart but we send billions overseas
+                      </div>
+                      <div className="message bg-blue-600 text-white px-4 py-3 rounded-2xl rounded-tl-md text-sm shadow-md max-w-[85%]">
+                        That's a powerful point about priorities. If you could redirect that foreign aid money, where would you invest it first?
+                      </div>
+                      <div className="message bg-white text-gray-800 px-4 py-3 rounded-2xl rounded-tr-md text-sm shadow-md max-w-[85%] ml-auto">
+                        fix our roads and bridges first. take care of americans before everyone else
+                      </div>
+                    </div>
+                    
+                    {/* Typing indicator */}
+                    <div className="typing-indicator flex items-center gap-2 mt-4 px-4">
+                      <div className="flex gap-1">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
+                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
+                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
+                      </div>
+                      <span className="text-xs text-gray-500">Polly is typing...</span>
+                    </div>
+                  </div>
+                  
+                  {/* Key Benefits */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <h4 className="font-semibold text-gray-900 mb-1">Deep Insights</h4>
+                      <p className="text-sm text-gray-600">Uncover the "why" behind opinions with follow-up questions</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                      </div>
+                      <h4 className="font-semibold text-gray-900 mb-1">Natural Flow</h4>
+                      <p className="text-sm text-gray-600">Conversations that feel human, not robotic surveys</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                      </div>
+                      <h4 className="font-semibold text-gray-900 mb-1">Adaptive Intelligence</h4>
+                      <p className="text-sm text-gray-600">AI adjusts questions based on responses in real-time</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature 2: Revolutionary Sampling */}
+          <div 
+            ref={(el) => { if (el) blocksRef.current[1] = el; }}
+            className="relative"
+          >
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="p-8 lg:p-12">
+                <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Revolutionary Sampling</h3>
+                
+                {/* Hero Section with Visual */}
+                <div className="mb-12">
+                  <div className="text-center mb-8">
+                    <div className="inline-block p-6 bg-purple-50 rounded-2xl mb-4">
+                      <svg className="w-16 h-16 mx-auto text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-2xl font-bold text-purple-600">Modern Sampling + AI</p>
+                      <p className="text-lg text-gray-600">We don't guess who's missing—we measure them scientifically</p>
+                    </div>
+                  </div>
+                  
+                </div>
+
+                {/* Four Breakthroughs */}
+                <div className="space-y-4">
+                  <h4 className="text-xl font-bold text-gray-900 mb-6 text-center">Four Scientific Breakthroughs</h4>
+                    
+                  {/* Visual Cards for Breakthroughs */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {/* Card 1 */}
+                    <div className="group cursor-pointer" onClick={() => toggleExpand(10)}>
+                      <div className={`bg-white border-2 ${expandedSection === 10 ? 'border-purple-400 shadow-lg' : 'border-gray-200'} rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:border-purple-300 h-full`}>
+                        <div className="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-full mb-4 mx-auto">
+                          <span className="text-xl font-bold text-purple-600">1</span>
+                        </div>
+                        <h5 className="text-lg font-semibold text-gray-900 mb-3 text-center">Understanding Polling Error</h5>
+                        <p className="text-sm text-gray-600 text-center mb-4">
+                          Harvard's breakthrough: Errors aren't random—they're systematic and measurable
+                        </p>
+                        <div className="text-center">
+                          <span className="text-purple-600 text-sm font-medium flex items-center justify-center gap-1">
+                            {expandedSection === 10 ? 'Close details' : 'Learn more'} 
+                            <svg className={`w-4 h-4 transform transition-transform ${expandedSection === 10 ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Card 2 */}
+                    <div className="group cursor-pointer" onClick={() => toggleExpand(11)}>
+                      <div className={`bg-white border-2 ${expandedSection === 11 ? 'border-blue-400 shadow-lg' : 'border-gray-200'} rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:border-blue-300 h-full`}>
+                        <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full mb-4 mx-auto">
+                          <span className="text-xl font-bold text-blue-600">2</span>
+                        </div>
+                        <h5 className="text-lg font-semibold text-gray-900 mb-3 text-center">Measuring the Invisible</h5>
+                        <p className="text-sm text-gray-600 text-center mb-4">
+                          Scientific method to measure the silent majority who avoid polls
+                        </p>
+                        <div className="text-center">
+                          <span className="text-blue-600 text-sm font-medium flex items-center justify-center gap-1">
+                            {expandedSection === 11 ? 'Close details' : 'Learn more'} 
+                            <svg className={`w-4 h-4 transform transition-transform ${expandedSection === 11 ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Card 3 */}
+                    <div className="group cursor-pointer" onClick={() => toggleExpand(12)}>
+                      <div className={`bg-white border-2 ${expandedSection === 12 ? 'border-green-400 shadow-lg' : 'border-gray-200'} rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:border-green-300 h-full`}>
+                        <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-full mb-4 mx-auto">
+                          <span className="text-xl font-bold text-green-600">3</span>
+                        </div>
+                        <h5 className="text-lg font-semibold text-gray-900 mb-3 text-center">Double Protection</h5>
+                        <p className="text-sm text-gray-600 text-center mb-4">
+                          Two independent methods ensure accuracy even when one fails
+                        </p>
+                        <div className="text-center">
+                          <span className="text-green-600 text-sm font-medium flex items-center justify-center gap-1">
+                            {expandedSection === 12 ? 'Close details' : 'Learn more'} 
+                            <svg className={`w-4 h-4 transform transition-transform ${expandedSection === 12 ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Card 4 */}
+                    <div className="group cursor-pointer" onClick={() => toggleExpand(13)}>
+                      <div className={`bg-white border-2 ${expandedSection === 13 ? 'border-amber-400 shadow-lg' : 'border-gray-200'} rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:border-amber-300 h-full`}>
+                        <div className="flex items-center justify-center w-12 h-12 bg-amber-100 rounded-full mb-4 mx-auto">
+                          <span className="text-xl font-bold text-amber-600">4</span>
+                        </div>
+                        <h5 className="text-lg font-semibold text-gray-900 mb-3 text-center">Actionable Insights</h5>
+                        <p className="text-sm text-gray-600 text-center mb-4">
+                          Transform complex data into clear, actionable intelligence
+                        </p>
+                        <div className="text-center">
+                          <span className="text-amber-600 text-sm font-medium flex items-center justify-center gap-1">
+                            {expandedSection === 13 ? 'Close details' : 'Learn more'} 
+                            <svg className={`w-4 h-4 transform transition-transform ${expandedSection === 13 ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Expanded Details */}
+                  {expandedSection === 10 && (
+                    <div className="mt-6 bg-purple-50 rounded-xl p-6 animate-fadeIn">
+                      <h6 className="font-semibold text-gray-900 mb-3">The Harvard Discovery</h6>
+                      <p className="text-gray-700 mb-4">
+                        Harvard's Xiao-Li Meng proved that polling errors aren't random—they're systematic. When 99% of people ignore polls, 
+                        even tiny differences between responders and non-responders explode into massive errors.
+                      </p>
+                      <div className="bg-white rounded-lg p-4 border border-purple-200">
+                        <p className="text-sm text-gray-700">
+                          <span className="font-semibold">Why polls failed in 2016 & 2020:</span> If Trump supporters were just 1% less likely to answer polls, 
+                          that tiny bias gets multiplied by millions of voters. Traditional weighting can't fix this—it's a mathematical impossibility.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+
+                  {expandedSection === 11 && (
+                    <div className="mt-6 bg-blue-50 rounded-xl p-6 animate-fadeIn">
+                      <h6 className="font-semibold text-gray-900 mb-3">The Innovation</h6>
+                      <p className="text-gray-700 mb-4">
+                        We don't guess who's missing—we measure them scientifically. By randomly assigning different levels of survey effort, 
+                        we can see exactly which groups systematically avoid polls.
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-white rounded-lg p-4 border border-blue-200">
+                          <p className="text-sm text-gray-700">
+                            <span className="font-semibold">Real-world proof:</span> Our method revealed Trump support was 10 points higher 
+                            than polls showed in the Midwest.
+                          </p>
+                        </div>
+                        <div className="bg-white rounded-lg p-4 border border-blue-200">
+                          <p className="text-sm text-gray-700">
+                            <span className="font-semibold">Validation:</span> Published in Political Analysis (2025) by Georgetown's Michael Bailey.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {expandedSection === 12 && (
+                    <div className="mt-6 bg-green-50 rounded-xl p-6 animate-fadeIn">
+                      <h6 className="font-semibold text-gray-900 mb-3">Double Protection System</h6>
+                      <p className="text-gray-700 mb-4">
+                        Traditional polls fail when their assumptions are wrong. We use two independent statistical methods that work together 
+                        to ensure accuracy even when one component is imperfect.
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-white rounded-lg p-4 border border-green-200">
+                          <h6 className="font-medium text-gray-900 mb-2">Method 1: Inverse Propensity</h6>
+                          <p className="text-sm text-gray-700">Adjusts for response probabilities</p>
+                        </div>
+                        <div className="bg-white rounded-lg p-4 border border-green-200">
+                          <h6 className="font-medium text-gray-900 mb-2">Method 2: Outcome Imputation</h6>
+                          <p className="text-sm text-gray-700">Estimates missing values scientifically</p>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-600 mt-4 italic">
+                        It's the statistical equivalent of having a backup parachute—ensuring accuracy even when traditional methods fail.
+                      </p>
+                    </div>
+                  )}
+
+                  {expandedSection === 13 && (
+                    <div className="mt-6 bg-amber-50 rounded-xl p-6 animate-fadeIn">
+                      <h6 className="font-semibold text-gray-900 mb-3">From Raw Data to Strategic Intelligence</h6>
+                      <p className="text-gray-700 mb-4">
+                        We map high-dimensional conversation data into actionable insights that drive real decisions. 
+                        Our AI doesn't just collect responses—it understands context, identifies patterns, and reveals hidden truths.
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="bg-white rounded-lg p-4 border border-amber-200">
+                          <h6 className="font-medium text-gray-900 mb-2">Pattern Detection</h6>
+                          <p className="text-sm text-gray-700">AI identifies emerging themes and correlations humans miss</p>
+                        </div>
+                        <div className="bg-white rounded-lg p-4 border border-amber-200">
+                          <h6 className="font-medium text-gray-900 mb-2">Sentiment Analysis</h6>
+                          <p className="text-sm text-gray-700">Understand not just what people say, but how they feel</p>
+                        </div>
+                        <div className="bg-white rounded-lg p-4 border border-amber-200">
+                          <h6 className="font-medium text-gray-900 mb-2">Strategic Mapping</h6>
+                          <p className="text-sm text-gray-700">Transform complex data into clear strategic recommendations</p>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-600 mt-4 italic">
+                        Every conversation becomes a data point. Every data point becomes an insight. Every insight drives better decisions.
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Bottom Summary */}
+                <div className="mt-12 text-center bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-8">
+                  <p className="text-xl font-semibold text-gray-900 mb-2">
+                    The Bottom Line
+                  </p>
+                  <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                    Our revolutionary sampling catches what everyone else misses—delivering 
+                    <span className="font-bold text-purple-600"> dramatically better accuracy</span> with 
+                    <span className="font-bold text-blue-600"> deeper insights</span>.
                   </p>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature 3: Economics Revolution */}
+          <div 
+            ref={(el) => { if (el) blocksRef.current[2] = el; }}
+            className="relative"
+          >
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="p-8 lg:p-12">
+                <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Economic Revolution</h3>
                 
-                <div className="mt-12">
-                  <h5 className="text-xl font-semibold text-blue-600 mb-6 text-center">How Niner Solves This</h5>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                    <div className="flex flex-col items-center text-center">
-                      <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl mb-4 transition-all hover:scale-110 hover:shadow-lg">
-                        <i className="fas fa-random"></i>
-                      </div>
-                      <div>
-                        <h6 className="text-base font-semibold text-gray-900 mb-1">Randomized Response Instruments</h6>
-                        <p className="text-sm text-gray-600 leading-relaxed">We randomly vary survey protocols to detect when respondents differ from non-respondents—even after demographic weighting.</p>
-                      </div>
+                {/* Economic Revolution Content */}
+                <div className="max-w-6xl mx-auto">
+                  <div className="text-center mb-8">
+                    <div className="inline-block p-6 bg-green-50 rounded-2xl mb-4">
+                      <svg className="w-16 h-16 mx-auto text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
                     </div>
-                    <div className="flex flex-col items-center text-center">
-                      <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl mb-4 transition-all hover:scale-110 hover:shadow-lg">
-                        <i className="fas fa-search"></i>
-                      </div>
-                      <div>
-                        <h6 className="text-base font-semibold text-gray-900 mb-1">Measure Hidden Correlations</h6>
-                        <p className="text-sm text-gray-600 leading-relaxed">By comparing responses across different protocols, we quantify the ρ<sub>R,Y</sub> correlation that traditional polls ignore.</p>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center text-center">
-                      <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl mb-4 transition-all hover:scale-110 hover:shadow-lg">
-                        <i className="fas fa-calculator"></i>
-                      </div>
-                      <div>
-                        <h6 className="text-base font-semibold text-gray-900 mb-1">Correct for True Bias</h6>
-                        <p className="text-sm text-gray-600 leading-relaxed">Our models adjust estimates based on measured non-response patterns, not just demographic weights.</p>
-                      </div>
+                    <div className="space-y-2">
+                      <p className="text-2xl font-bold text-green-600">Revolutionary Economics</p>
+                      <p className="text-lg text-gray-600">Better quality at a fraction of the cost</p>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Divider line */}
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-px bg-gray-200 last:hidden"></div>
-          </div>
-
-          {/* AI-Powered Conversations Feature */}
-          <div className="pb-8 mb-8 relative last:pb-0 last:mb-0">
-            <div className="flex-1 text-left">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white text-2xl flex-shrink-0 transition-all hover:scale-110 hover:shadow-lg">
-                  <i className="fas fa-comments"></i>
-                </div>
-                <h4 className="text-2xl text-gray-900 font-semibold">AI-Powered Conversations</h4>
-              </div>
-              <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                Custom-trained chatbots that adapt questions based on responses, creating natural conversations that reveal deeper insights than fixed surveys.
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 w-full">
-                {/* Traditional Survey */}
-                <div className="bg-white rounded-xl overflow-hidden border border-gray-300 flex flex-col h-full transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">
-                  <div className="flex justify-between items-center p-4 border-b border-gray-100">
-                    <div className="font-semibold text-lg text-gray-900">Traditional Survey</div>
-                    <div className="px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide bg-gray-200 text-gray-600">Limited</div>
+                  
+                  {/* Main Cost Comparison */}
+                  <div className="text-center mb-10">
+                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                      Traditional polling requires massive call centers, thousands of employees, and weeks of work. 
+                      Niner delivers superior results with AI-powered efficiency at a fraction of the cost.
+                    </p>
                   </div>
-                  <div className="flex-1 p-4 text-sm min-h-[180px] overflow-y-auto bg-white">
-                    <div className="mb-4 font-medium text-gray-900">
-                      Q: What is your view about the U.S. federal budget deficit?
-                    </div>
-                    <div className="ml-8 text-gray-600 leading-8">
-                      ○ Too high<br/>
-                      ○ Too low<br/>
-                      ○ Neither<br/>
-                      ○ Don't know
-                    </div>
-                  </div>
-                  <div className="p-3 border-t border-gray-100 bg-gray-50 flex flex-col gap-2">
-                    <div className="flex items-center gap-3 text-sm">
-                      <i className="fas fa-times-circle text-gray-500 text-base"></i>
-                      <span className="text-gray-600">Limited context</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-sm">
-                      <i className="fas fa-times-circle text-gray-500 text-base"></i>
-                      <span className="text-gray-600">Surface insights</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-sm">
-                      <i className="fas fa-times-circle text-gray-500 text-base"></i>
-                      <span className="text-gray-600">No follow-up</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Niner Research AI */}
-                <div className="bg-white rounded-xl overflow-hidden border border-blue-600 flex flex-col h-full transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 relative">
-                  <div className="flex justify-between items-center p-4 border-b border-gray-100">
-                    <div className="font-semibold text-lg text-blue-600">Niner Research AI</div>
-                    <div className="px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide bg-blue-600 text-white">Advanced</div>
-                  </div>
-                  <div className="flex-1 p-4 text-sm min-h-[180px] overflow-y-auto bg-white">
-                    <div className="flex flex-col gap-2">
-                      <div className="bg-blue-600 text-white px-4 py-2 rounded-[18px] mb-2 max-w-[85%] text-sm leading-normal">
-                        Hey! Quick question - what do you think about all this government spending lately?
-                      </div>
-                      <div className="bg-gray-100 text-gray-800 px-4 py-2 rounded-[18px] mb-2 max-w-[85%] ml-auto text-left text-sm leading-relaxed">
-                        honestly its crazy high
-                      </div>
-                      <div className="bg-blue-600 text-white px-4 py-2 rounded-[18px] mb-2 max-w-[85%] text-sm leading-normal">
-                        Yeah I hear that a lot. What bugs you most about it?
-                      </div>
-                      <div className="bg-gray-100 text-gray-800 px-4 py-2 rounded-[18px] mb-2 max-w-[85%] ml-auto text-left text-sm leading-relaxed">
-                        idk just feels like they spend on everything except what actually helps ppl
+                  
+                  {/* Visual Comparison */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    {/* Traditional Polling */}
+                    <div className="bg-gray-50 rounded-2xl p-8 shadow-lg">
+                      <h4 className="text-2xl font-bold text-gray-900 mb-6">Traditional Polling</h4>
+                      <div className="space-y-6">
+                        <div className="pb-6 border-b border-gray-200">
+                          <p className="text-sm text-gray-600 mb-2 uppercase tracking-wide">Cost per comprehensive study</p>
+                          <p className="text-5xl font-bold text-red-600">Very High</p>
+                        </div>
+                        
+                        <div className="space-y-4">
+                          <div className="flex items-start">
+                            <span className="text-red-500 mr-3 mt-1 text-xl">•</span>
+                            <div>
+                              <p className="font-semibold text-gray-900 text-lg">Call center infrastructure</p>
+                              <p className="text-gray-600">Physical facilities, equipment, management overhead</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start">
+                            <span className="text-red-500 mr-3 mt-1 text-xl">•</span>
+                            <div>
+                              <p className="font-semibold text-gray-900 text-lg">Human labor intensive</p>
+                              <p className="text-gray-600">Hundreds of callers making thousands of attempts</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start">
+                            <span className="text-red-500 mr-3 mt-1 text-xl">•</span>
+                            <div>
+                              <p className="font-semibold text-gray-900 text-lg">Low success rate</p>
+                              <p className="text-gray-600">Less than 1% response rate means wasted resources</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start">
+                            <span className="text-red-500 mr-3 mt-1 text-xl">•</span>
+                            <div>
+                              <p className="font-semibold text-gray-900 text-lg">Extended timelines</p>
+                              <p className="text-gray-600">Weeks to gather and process responses</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="p-3 border-t border-gray-100 bg-blue-600/5 flex flex-col gap-2">
-                    <div className="flex items-center gap-3 text-sm">
-                      <i className="fas fa-check-circle text-blue-600 text-base"></i>
-                      <span className="text-gray-700 font-medium">Natural flow</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-sm">
-                      <i className="fas fa-check-circle text-blue-600 text-base"></i>
-                      <span className="text-gray-700 font-medium">Deep insights</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-sm">
-                      <i className="fas fa-check-circle text-blue-600 text-base"></i>
-                      <span className="text-gray-700 font-medium">Adaptive questioning</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Divider line */}
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-px bg-gray-200 last:hidden"></div>
-          </div>
-
-          {/* Dramatically Lower Costs Feature */}
-          <div className="pb-4">
-            <div className="flex-1 text-left">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white text-2xl flex-shrink-0 transition-all hover:scale-110 hover:shadow-lg">
-                  <i className="fas fa-dollar-sign"></i>
-                </div>
-                <h4 className="text-2xl text-gray-900 font-semibold">Dramatically Lower Costs, Superior Results</h4>
-              </div>
-              <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                Major pollsters burn through millions calling people who won't answer. We reach them where they actually want to engage—achieving better data at a fraction of the cost.
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 w-full">
-                {/* Traditional Phone Polling */}
-                <div className="bg-white rounded-xl overflow-hidden border border-gray-300 flex flex-col h-full transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">
-                  <div className="flex justify-between items-center p-4 border-b border-gray-100">
-                    <div className="font-semibold text-lg text-gray-900">Traditional Phone Polling</div>
-                    <div className="px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide bg-gray-200 text-gray-600">Expensive</div>
-                  </div>
-                  <div className="flex-1 p-4 text-sm min-h-[180px] overflow-y-auto bg-white">
-                    <div className="mb-4 font-medium text-gray-900">
-                      Why costs keep climbing:
-                    </div>
-                    <div className="ml-8 text-gray-600 leading-8">
-                      • 500,000+ calls for 4,000 responses<br/>
-                      • 24/7 call center operations<br/>
-                      • &lt;1% response rates<br/>
-                      • Nobody answers unknown numbers
-                    </div>
-                  </div>
-                  <div className="p-3 border-t border-gray-100 bg-gray-50 flex flex-col gap-2">
-                    <div className="flex items-center gap-3 text-sm">
-                      <i className="fas fa-times-circle text-gray-500 text-base"></i>
-                      <span className="text-gray-600">Massive waste</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-sm">
-                      <i className="fas fa-times-circle text-gray-500 text-base"></i>
-                      <span className="text-gray-600">Fixed overhead</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-sm">
-                      <i className="fas fa-times-circle text-gray-500 text-base"></i>
-                      <span className="text-gray-600">Can't scale</span>
+                    
+                    {/* Niner Approach */}
+                    <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-green-400">
+                      <h4 className="text-2xl font-bold text-gray-900 mb-6">Niner Approach</h4>
+                      <div className="space-y-6">
+                        <div className="pb-6 border-b border-green-200">
+                          <p className="text-sm text-gray-600 mb-2 uppercase tracking-wide">Cost per comprehensive study</p>
+                          <p className="text-5xl font-bold text-green-600">Fraction of Cost</p>
+                          <p className="text-lg text-gray-600 mt-2">With superior accuracy</p>
+                        </div>
+                        
+                        <div className="space-y-4">
+                          <div className="flex items-start">
+                            <span className="text-green-600 mr-3 mt-1 text-xl font-bold">✓</span>
+                            <div>
+                              <p className="font-semibold text-gray-900 text-lg">AI-powered conversations</p>
+                              <p className="text-gray-600">Automated yet personalized interactions at scale</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start">
+                            <span className="text-green-600 mr-3 mt-1 text-xl font-bold">✓</span>
+                            <div>
+                              <p className="font-semibold text-gray-900 text-lg">Smart targeting</p>
+                              <p className="text-gray-600">Scientific sampling means fewer contacts needed</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start">
+                            <span className="text-green-600 mr-3 mt-1 text-xl font-bold">✓</span>
+                            <div>
+                              <p className="font-semibold text-gray-900 text-lg">Higher engagement</p>
+                              <p className="text-gray-600">Natural conversations increase response rates</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start">
+                            <span className="text-green-600 mr-3 mt-1 text-xl font-bold">✓</span>
+                            <div>
+                              <p className="font-semibold text-gray-900 text-lg">Instant analysis</p>
+                              <p className="text-gray-600">Real-time results without manual processing</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
                 
-                {/* Niner AI System */}
-                <div className="bg-white rounded-xl overflow-hidden border border-blue-600 flex flex-col h-full transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 relative">
-                  <div className="flex justify-between items-center p-4 border-b border-gray-100">
-                    <div className="font-semibold text-lg text-blue-600">Niner AI System</div>
-                    <div className="px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide bg-blue-600 text-white">Efficient</div>
-                  </div>
-                  <div className="flex-1 p-4 text-sm min-h-[180px] overflow-y-auto bg-white">
-                    <div className="mb-4 font-medium text-gray-900">
-                      How we slash costs:
+                {/* Value Proposition */}
+                <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-10 mb-12 mt-16">
+                  <h4 className="text-3xl font-bold text-gray-900 mb-10 text-center">The Niner Advantage</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <div className="text-center">
+                      <h5 className="text-2xl font-bold text-blue-600 mb-3">Lower Costs</h5>
+                      <p className="text-gray-700 leading-relaxed">
+                        Eliminate call centers, reduce labor, and leverage AI efficiency to slash polling expenses
+                      </p>
                     </div>
-                    <div className="ml-8 text-gray-600 leading-8">
-                      • Automated conversations people enjoy<br/>
-                      • Web interface meets users where they are<br/>
-                      • One-time build scales infinitely<br/>
-                      • 5-10% response rates expected
+                    <div className="text-center">
+                      <h5 className="text-2xl font-bold text-green-600 mb-3">Better Data</h5>
+                      <p className="text-gray-700 leading-relaxed">
+                        More accurate results through scientific sampling and natural conversations
+                      </p>
                     </div>
-                  </div>
-                  <div className="p-3 border-t border-gray-100 bg-blue-600/5 flex flex-col gap-2">
-                    <div className="flex items-center gap-3 text-sm">
-                      <i className="fas fa-check-circle text-blue-600 text-base"></i>
-                      <span className="text-gray-700 font-medium">90% lower costs</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-sm">
-                      <i className="fas fa-check-circle text-blue-600 text-base"></i>
-                      <span className="text-gray-700 font-medium">Better engagement</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-sm">
-                      <i className="fas fa-check-circle text-blue-600 text-base"></i>
-                      <span className="text-gray-700 font-medium">Instant scale</span>
+                    <div className="text-center">
+                      <h5 className="text-2xl font-bold text-purple-600 mb-3">Faster Insights</h5>
+                      <p className="text-gray-700 leading-relaxed">
+                        Get results in hours instead of weeks with automated analysis and reporting
+                      </p>
                     </div>
                   </div>
                 </div>
+                
+                {/* Bottom Line */}
+                <div className="text-center max-w-3xl mx-auto">
+                  <h4 className="text-3xl font-bold text-gray-900 mb-6">
+                    Why pay more for worse results?
+                  </h4>
+                  <p className="text-xl text-gray-700 leading-relaxed">
+                    Niner delivers superior polling accuracy at a fraction of traditional costs. 
+                    It's not just an improvement—it's a complete transformation of polling economics.
+                  </p>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+        
+        {/* Call to Action */}
+        <div className="mt-20 text-center">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to see the future of polling?</h3>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+              Request a Demo
+            </button>
+            <button className="px-8 py-4 bg-transparent border-2 border-gray-400 hover:border-gray-600 text-gray-700 hover:text-gray-900 font-semibold rounded-lg transition-all duration-300">
+              Download Case Study
+            </button>
           </div>
         </div>
       </div>

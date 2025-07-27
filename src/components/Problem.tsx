@@ -56,9 +56,8 @@ const Problem: React.FC = () => {
           <div 
             ref={(el) => { if (el) cardsRef.current[0] = el; }}
             className="relative">
-            <div className="absolute -left-4 lg:-left-8 top-0 text-6xl lg:text-8xl font-bold text-blue-100 select-none">01</div>
-            <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+            <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300 relative">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center relative">
                 <div className="order-2 lg:order-1">
                   <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-lg mx-auto">
                 <defs>
@@ -125,9 +124,8 @@ const Problem: React.FC = () => {
           <div 
             ref={(el) => { if (el) cardsRef.current[1] = el; }}
             className="relative">
-            <div className="absolute -right-4 lg:-right-8 top-0 text-6xl lg:text-8xl font-bold text-blue-100 select-none">02</div>
-            <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+            <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300 relative">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center relative">
                 <div className="order-2 lg:order-1">
                   <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">Non-Ignorable Non-Response</h3>
                   <p className="text-4xl lg:text-5xl font-extrabold text-blue-900 mb-4">Systematic Bias</p>
@@ -192,9 +190,8 @@ const Problem: React.FC = () => {
           <div 
             ref={(el) => { if (el) cardsRef.current[2] = el; }}
             className="relative">
-            <div className="absolute -left-4 lg:-left-8 top-0 text-6xl lg:text-8xl font-bold text-blue-100 select-none">03</div>
-            <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+            <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300 relative">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center relative">
                 <div className="order-2 lg:order-1">
                   <svg viewBox="-10 -10 410 210" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-lg mx-auto">
                 <defs>
@@ -268,9 +265,8 @@ const Problem: React.FC = () => {
           <div 
             ref={(el) => { if (el) cardsRef.current[3] = el; }}
             className="relative">
-            <div className="absolute -right-4 lg:-right-8 top-0 text-6xl lg:text-8xl font-bold text-blue-100 select-none">04</div>
-            <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+            <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300 relative">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center relative">
                 <div className="order-2 lg:order-1">
                   <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">The Cost Trap</h3>
                   <p className="text-4xl lg:text-5xl font-extrabold text-blue-900 mb-4">Accurate or Affordable</p>
