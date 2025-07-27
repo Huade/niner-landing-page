@@ -1,18 +1,66 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Problem: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    const cards = cardsRef.current;
+    
+    cards.forEach((card, index) => {
+      if (card) {
+        const isEven = index % 2 === 0;
+        gsap.fromTo(card,
+          {
+            x: isEven ? -100 : 100,
+            opacity: 0,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      }
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   return (
-    <section id="problem" className="py-20 bg-gray-50">
+    <section id="problem" className="py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-16">
-          The Hidden Crisis in Opinion Research
-        </h2>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+            The Hidden Crisis in Opinion Research
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Four fundamental flaws that make traditional polling obsolete
+          </p>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="flex flex-col space-y-16">
           {/* Crisis 1: Response Rate Collapse */}
-          <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
-            <div className="mb-6">
-              <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+          <div 
+            ref={(el) => { if (el) cardsRef.current[0] = el; }}
+            className="relative">
+            <div className="absolute -left-4 lg:-left-8 top-0 text-6xl lg:text-8xl font-bold text-blue-100 select-none">01</div>
+            <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                <div className="order-2 lg:order-1">
+                  <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-lg mx-auto">
                 <defs>
                   <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" stopColor="#34699A" stopOpacity="0.1"/>
@@ -59,21 +107,36 @@ const Problem: React.FC = () => {
                 <text x="20" y="25" fontSize="12" fill="#666">
                   Response rate
                 </text>
-              </svg>
-            </div>
-            <div className="text-center">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Collapse of Response Rates</h3>
-              <p className="text-5xl font-extrabold text-blue-900 mb-4">&lt;1%</p>
-              <p className="text-gray-600 leading-relaxed">
-                Traditional polling is broken. Major pollsters struggle with sub-1% response rates—burning through 500,000+ calls just to reach 4,000 people.
-              </p>
+                  </svg>
+                </div>
+                <div className="order-1 lg:order-2">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">Collapse of Response Rates</h3>
+                  <p className="text-5xl lg:text-6xl font-extrabold text-blue-900 mb-4">&lt;1%</p>
+                  <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
+                    Traditional polling is broken. Major pollsters struggle with sub-1% response rates—burning through 500,000+ calls just to reach 4,000 people.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
+
           {/* Crisis 2: Systematic Bias */}
-          <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
-            <div className="mb-6">
-              <svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+          <div 
+            ref={(el) => { if (el) cardsRef.current[1] = el; }}
+            className="relative">
+            <div className="absolute -right-4 lg:-right-8 top-0 text-6xl lg:text-8xl font-bold text-blue-100 select-none">02</div>
+            <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                <div className="order-2 lg:order-1">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">Non-Ignorable Non-Response</h3>
+                  <p className="text-4xl lg:text-5xl font-extrabold text-blue-900 mb-4">Systematic Bias</p>
+                  <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
+                    The 99% who don't answer aren't just missing data points. They're systematically different from those who do, creating a built-in bias that no amount of weighting can fix.
+                  </p>
+                </div>
+                <div className="order-1 lg:order-2">
+                  <svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-lg mx-auto">
                 {/* X-axis */}
                 <line x1="50" y1="120" x2="480" y2="120" stroke="#333" strokeWidth="2"/>
                 <text x="265" y="145" textAnchor="middle" fontSize="12" fill="#666">
@@ -118,21 +181,22 @@ const Problem: React.FC = () => {
                     Everyone
                   </text>
                 </g>
-              </svg>
-            </div>
-            <div className="text-center">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Non-Ignorable Non-Response</h3>
-              <p className="text-3xl font-extrabold text-blue-900 mb-4">Systematic Bias</p>
-              <p className="text-gray-600 leading-relaxed">
-                The 99% who don't answer aren't just missing data points. They're systematically different from those who do, creating a built-in bias that no amount of weighting can fix.
-              </p>
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
 
+
           {/* Crisis 3: Confidently Wrong */}
-          <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
-            <div className="mb-6">
-              <svg viewBox="-10 -10 410 210" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+          <div 
+            ref={(el) => { if (el) cardsRef.current[2] = el; }}
+            className="relative">
+            <div className="absolute -left-4 lg:-left-8 top-0 text-6xl lg:text-8xl font-bold text-blue-100 select-none">03</div>
+            <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                <div className="order-2 lg:order-1">
+                  <svg viewBox="-10 -10 410 210" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-lg mx-auto">
                 <defs>
                   <linearGradient id="samplingGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" stopColor="#34699A" stopOpacity="0.1"/>
@@ -185,15 +249,80 @@ const Problem: React.FC = () => {
                          C 280 75, 310 73, 340 71
                          C 355 70, 370 69, 370 68"
                       stroke="url(#curveGradient)" strokeWidth="3" fill="none"/>
-              </svg>
+                  </svg>
+                </div>
+                <div className="order-1 lg:order-2">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">The Big Data Paradox</h3>
+                  <p className="text-4xl lg:text-5xl font-extrabold text-blue-900 mb-4">More Data, More Wrong</p>
+                  <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
+                    Without taking data quality into account, population inferences 
+                    with Big Data are subject to a Big Data Paradox: the more the data, the surer we fool ourselves.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="text-center">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">The Big Data Paradox</h3>
-              <p className="text-3xl font-extrabold text-blue-900 mb-4">More Data, More Wrong</p>
-              <p className="text-gray-600 leading-relaxed">
-                Without taking data quality into account, population inferences 
-                with Big Data are subject to a Big Data Paradox: the more the data, the surer we fool ourselves.
-              </p>
+          </div>
+
+
+          {/* Crisis 4: The Cost Trap */}
+          <div 
+            ref={(el) => { if (el) cardsRef.current[3] = el; }}
+            className="relative">
+            <div className="absolute -right-4 lg:-right-8 top-0 text-6xl lg:text-8xl font-bold text-blue-100 select-none">04</div>
+            <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                <div className="order-2 lg:order-1">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">The Cost Trap</h3>
+                  <p className="text-4xl lg:text-5xl font-extrabold text-blue-900 mb-4">Accurate or Affordable</p>
+                  <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
+                    Choose your poison: Spend hundreds of thousands on probability polls, or save money with non-probability samples that can't be trusted.
+                  </p>
+                </div>
+                <div className="order-1 lg:order-2">
+                  <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-lg mx-auto">
+                <defs>
+                  <linearGradient id="costGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#ef4444" stopOpacity="0.8"/>
+                    <stop offset="100%" stopColor="#ef4444" stopOpacity="0.2"/>
+                  </linearGradient>
+                  <linearGradient id="costGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#34699A" stopOpacity="0.8"/>
+                    <stop offset="100%" stopColor="#34699A" stopOpacity="0.2"/>
+                  </linearGradient>
+                </defs>
+                
+                {/* Y-axis (Cost) */}
+                <line x1="50" y1="200" x2="50" y2="40" stroke="#666" strokeWidth="2"/>
+                <text x="25" y="120" fontSize="12" fill="#666" textAnchor="middle" transform="rotate(-90 25 120)">
+                  Cost
+                </text>
+                <text x="45" y="45" fontSize="10" fill="#666" textAnchor="end">High</text>
+                <text x="45" y="195" fontSize="10" fill="#666" textAnchor="end">Low</text>
+                
+                {/* X-axis (Accuracy) */}
+                <line x1="50" y1="200" x2="350" y2="200" stroke="#666" strokeWidth="2"/>
+                <text x="200" y="230" fontSize="12" fill="#666" textAnchor="middle">
+                  Accuracy
+                </text>
+                <text x="60" y="215" fontSize="10" fill="#666">Low</text>
+                <text x="340" y="215" fontSize="10" fill="#666" textAnchor="end">High</text>
+                
+                {/* Probability polls (top right) */}
+                <g transform="translate(280, 70)">
+                  <text x="0" y="0" fontSize="14" fill="#113F67" textAnchor="middle" fontWeight="700">
+                    Probability polls
+                  </text>
+                </g>
+                
+                {/* Non-probability polls (bottom left) */}
+                <g transform="translate(120, 170)">
+                  <text x="0" y="0" fontSize="14" fill="#34699A" textAnchor="middle" fontWeight="700">
+                    Non-probability
+                  </text>
+                </g>
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
         </div>
