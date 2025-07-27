@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Results from './components/Results';
@@ -11,7 +10,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="App">
+    <div className="min-h-screen">
       <Navigation />
       <Hero />
       <Problem />

@@ -1,8 +1,13 @@
 import React from 'react';
-import './Industries.css';
 
-const Industries = () => {
-  const industries = [
+interface Industry {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+const Industries: React.FC = () => {
+  const industries: Industry[] = [
     {
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -76,19 +81,27 @@ const Industries = () => {
   ];
 
   return (
-    <section id="industries" className="industries">
-      <div className="container">
-        <h2 className="section-title">Transforming Research Across Industries</h2>
-        <p className="section-subtitle">
+    <section id="industries" className="py-24 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-8">Transforming Research Across Industries</h2>
+        <p className="text-lg text-gray-700 text-center max-w-3xl mx-auto mb-12 leading-relaxed px-4 md:px-6">
           Traditional polling is broken. With response rates plummeting from 40% to less than 1%, the voices you hear are no longer representative. Our breakthrough statistical frameworks reveal what the silent majority truly thinks by correcting for who responds and who doesn't.
         </p>
         
-        <div className="industries-grid">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {industries.map((industry, index) => (
-            <div key={index} className="industry-card">
-              <div className="industry-icon">{industry.icon}</div>
-              <h3>{industry.title}</h3>
-              <p>{industry.description}</p>
+            <div 
+              key={index} 
+              className="bg-white p-8 rounded-lg text-center shadow-sm transition-all duration-200 relative overflow-hidden border border-gray-200 hover:-translate-y-1 hover:shadow-lg group"
+            >
+              <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-gradient-to-br from-transparent via-blue-600/10 to-transparent rotate-45 transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
+              <div className="w-16 h-16 mx-auto mb-4 text-blue-600 flex items-center justify-center transition-all duration-300 group-hover:text-blue-700 group-hover:scale-110">
+                {industry.icon}
+              </div>
+              <h3 className="text-xl text-gray-900 mb-4 font-semibold">{industry.title}</h3>
+              <p className="text-base text-gray-600 leading-relaxed min-h-[80px] flex items-center text-center">
+                {industry.description}
+              </p>
             </div>
           ))}
         </div>

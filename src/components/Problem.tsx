@@ -1,17 +1,18 @@
 import React from 'react';
-import './Problem.css';
 
-const Problem = () => {
+const Problem: React.FC = () => {
   return (
-    <section id="problem" className="problem">
-      <div className="container">
-        <h2 className="section-title">The Hidden Crisis in Opinion Research</h2>
-        <div className="crisis-list">
+    <section id="problem" className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-16">
+          The Hidden Crisis in Opinion Research
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Crisis 1: Response Rate Collapse */}
-          <div className="crisis-item">
-            <div className="crisis-visual">
-              <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
-                {/* Background gradient */}
+          <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+            <div className="mb-6">
+              <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
                 <defs>
                   <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" stopColor="#34699A" stopOpacity="0.1"/>
@@ -60,18 +61,19 @@ const Problem = () => {
                 </text>
               </svg>
             </div>
-            <div className="crisis-content">
-              <h3>Collapse of Response Rates</h3>
-              <p className="crisis-stat"><span style={{color: '#113F67', fontWeight: '800', fontSize: '2.5rem'}}>&lt;1%</span></p>
-              <p className="crisis-desc">
+            <div className="text-center">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Collapse of Response Rates</h3>
+              <p className="text-5xl font-extrabold text-blue-900 mb-4">&lt;1%</p>
+              <p className="text-gray-600 leading-relaxed">
                 Traditional polling is broken. Major pollsters struggle with sub-1% response rates—burning through 500,000+ calls just to reach 4,000 people.
               </p>
             </div>
           </div>
+
           {/* Crisis 2: Systematic Bias */}
-          <div className="crisis-item">
-            <div className="crisis-visual">
-              <svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg">
+          <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+            <div className="mb-6">
+              <svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
                 {/* X-axis */}
                 <line x1="50" y1="120" x2="480" y2="120" stroke="#333" strokeWidth="2"/>
                 <text x="265" y="145" textAnchor="middle" fontSize="12" fill="#666">
@@ -118,18 +120,19 @@ const Problem = () => {
                 </g>
               </svg>
             </div>
-            <div className="crisis-content">
-              <h3>Non-Ignorable Non-Response</h3>
-              <p className="crisis-stat"><span style={{color: '#113F67', fontWeight: '800', fontSize: '2.5rem'}}>Systematic Bias</span></p>
-              <p className="crisis-desc">
+            <div className="text-center">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Non-Ignorable Non-Response</h3>
+              <p className="text-3xl font-extrabold text-blue-900 mb-4">Systematic Bias</p>
+              <p className="text-gray-600 leading-relaxed">
                 The 99% who don't answer aren't just missing data points. They're systematically different from those who do, creating a built-in bias that no amount of weighting can fix.
               </p>
             </div>
           </div>
+
           {/* Crisis 3: Confidently Wrong */}
-          <div className="crisis-item">
-            <div className="crisis-visual">
-              <svg viewBox="-10 -10 410 210" xmlns="http://www.w3.org/2000/svg">
+          <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+            <div className="mb-6">
+              <svg viewBox="-10 -10 410 210" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
                 <defs>
                   <linearGradient id="samplingGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" stopColor="#34699A" stopOpacity="0.1"/>
@@ -184,10 +187,10 @@ const Problem = () => {
                       stroke="url(#curveGradient)" strokeWidth="3" fill="none"/>
               </svg>
             </div>
-            <div className="crisis-content">
-              <h3>The Big Data Paradox</h3>
-              <p className="crisis-stat"><span style={{color: '#113F67', fontWeight: '800', fontSize: '2.5rem'}}>More Data, More Wrong</span></p>
-              <p className="crisis-desc">
+            <div className="text-center">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">The Big Data Paradox</h3>
+              <p className="text-3xl font-extrabold text-blue-900 mb-4">More Data, More Wrong</p>
+              <p className="text-gray-600 leading-relaxed">
                 Without taking data quality into account, population inferences 
                 with Big Data are subject to a Big Data Paradox: the more the data, the surer we fool ourselves.
               </p>
