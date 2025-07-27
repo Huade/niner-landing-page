@@ -3,6 +3,39 @@
   background-color: var(--color-gray-50);
 }
 
+.section-subtitle {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-2xl);
+  text-align: center;
+  font-size: var(--font-size-lg);
+  color: var(--color-gray-700);
+  line-height: 1.8;
+  padding: 0 var(--spacing-lg);
+}
+
+.equation-showcase {
+  max-width: 700px;
+  margin: 0 auto var(--spacing-3xl);
+  background: var(--color-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-gray-200);
+}
+
+.equation-label {
+  text-align: center;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-800);
+  margin-bottom: var(--spacing-md);
+}
+
+.meng-equation {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .industries-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -45,9 +78,25 @@
   animation: shimmer 0.3s ease-out;
 }
 
+.industry-card:hover .industry-icon {
+  color: var(--color-primary-hover);
+  transform: scale(1.1);
+}
+
 .industry-icon {
-  font-size: var(--font-size-6xl);
-  margin-bottom: var(--spacing-md);
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--spacing-md);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.industry-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .industry-card h3 {
@@ -60,7 +109,11 @@
 .industry-card p {
   font-size: var(--font-size-base);
   color: var(--color-gray-600);
-  line-height: 1.6;
+  line-height: 1.7;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
 @keyframes shimmer {
@@ -83,6 +136,21 @@
   }
   
   .industry-icon {
-    font-size: var(--font-size-5xl);
+    width: 48px;
+    height: 48px;
+  }
+  
+  .equation-showcase {
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .meng-equation {
+    font-size: 14px;
+  }
+  
+  .section-subtitle {
+    font-size: var(--font-size-base);
+    padding: 0 var(--spacing-base);
   }
 }

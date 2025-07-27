@@ -6,7 +6,6 @@ import Results from './components/Results';
 import Problem from './components/Problem';
 import Solution from './components/Solution';
 import Industries from './components/Industries';
-import Team from './components/Team';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 
@@ -19,7 +18,6 @@ function App() {
       <Solution />
       <Results />
       <Industries />
-      <Team />
       <FAQ />
       <Footer />
     </div>
