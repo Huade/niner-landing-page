@@ -83,15 +83,9 @@ const Navigation: React.FC = () => {
               </a>
               <a 
                 href="#contact" 
-                className="ml-4 px-6 py-2 bg-blue-600 text-white font-medium rounded-full hover:bg-blue-700 transition-colors duration-200"
+                className="ml-4 px-6 py-2.5 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-semibold rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
               >
                 Request a Demo
-              </a>
-              <a 
-                href="#survey" 
-                className="px-6 py-2 bg-green-600 text-white font-medium rounded-full hover:bg-green-700 transition-colors duration-200"
-              >
-                Take survey with NINER AI
               </a>
             </div>
           </div>
@@ -151,17 +145,10 @@ const Navigation: React.FC = () => {
           </a>
           <a 
             href="#contact" 
-            className="block px-3 py-2 mt-4 bg-blue-600 text-white font-medium rounded-full text-center hover:bg-blue-700 transition-colors duration-200"
+            className="block px-3 py-2.5 mt-4 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-semibold rounded-lg text-center transition-all duration-300 shadow-md hover:shadow-lg"
             onClick={() => setMobileMenuOpen(false)}
           >
             Request a Demo
-          </a>
-          <a 
-            href="#survey" 
-            className="block px-3 py-2 bg-green-600 text-white font-medium rounded-full text-center hover:bg-green-700 transition-colors duration-200"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Take survey with NINER AI
           </a>
         </div>
       </div>
