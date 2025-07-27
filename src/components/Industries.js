@@ -6,10 +6,10 @@ const Industries = () => {
     {
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
-          <path d="M9 16V8"/>
-          <path d="M12 16V10"/>
-          <path d="M15 16V6"/>
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M9 9v6"/>
+          <path d="M12 7v8"/>
+          <path d="M15 11v4"/>
         </svg>
       ),
       title: 'Market Research',
@@ -18,9 +18,9 @@ const Industries = () => {
     {
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-          <circle cx="12" cy="10" r="3"/>
-          <path d="M12 2v8"/>
+          <rect x="5" y="2" width="14" height="20" rx="1"/>
+          <rect x="8" y="6" width="8" height="4"/>
+          <rect x="8" y="14" width="8" height="4"/>
         </svg>
       ),
       title: 'Political Polling',
@@ -29,10 +29,11 @@ const Industries = () => {
     {
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-          <path d="M12 6v12"/>
-          <path d="M8 12h8"/>
+          <path d="M3 21h18"/>
+          <path d="M5 21V7l7-4l7 4v14"/>
+          <path d="M12 3v8"/>
+          <path d="M5 11h14"/>
+          <rect x="9" y="14" width="6" height="7"/>
         </svg>
       ),
       title: 'Government & Census Data',
@@ -41,9 +42,10 @@ const Industries = () => {
     {
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="9" cy="9" r="7"/>
-          <circle cx="15" cy="15" r="7"/>
-          <path d="M5.5 14.5L14.5 5.5"/>
+          <circle cx="11" cy="11" r="8"/>
+          <path d="M21 21l-4.35-4.35"/>
+          <path d="M11 8v6"/>
+          <path d="M8 11h6"/>
         </svg>
       ),
       title: 'Academic Research',
@@ -52,9 +54,7 @@ const Industries = () => {
     {
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-          <path d="M2 17l10 5 10-5"/>
-          <path d="M2 12l10 5 10-5"/>
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
         </svg>
       ),
       title: 'Healthcare Surveys',
@@ -63,7 +63,11 @@ const Industries = () => {
     {
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          <line x1="12" y1="2" x2="12" y2="22"/>
+          <polyline points="17 7 12 2 7 7"/>
+          <polyline points="7 17 12 22 17 17"/>
+          <path d="M4.50 11.5h5"/>
+          <path d="M14.5 11.5h5"/>
         </svg>
       ),
       title: 'Financial Services',
@@ -76,7 +80,7 @@ const Industries = () => {
       <div className="container">
         <h2 className="section-title">Transforming Research Across Industries</h2>
         <p className="section-subtitle">
-          Traditional polling is broken. With response rates plummeting from 40% to less than 5%, the voices you hear are no longer representative. Our breakthrough statistical frameworks reveal what the silent majority truly thinks by correcting for who responds and who doesn't.
+          Traditional polling is broken. With response rates plummeting from 40% to less than 1%, the voices you hear are no longer representative. Our breakthrough statistical frameworks reveal what the silent majority truly thinks by correcting for who responds and who doesn't.
         </p>
         
         <div className="industries-grid">

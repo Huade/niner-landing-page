@@ -1,15 +1,16 @@
 :root {
   /* Core Brand Colors */
-  --color-primary: #0070f3;
-  --color-primary-dark: #0051cc;
-  --color-primary-light: #3291ff;
-  --color-secondary: #667eea;
-  --color-secondary-dark: #5a67d8;
-  --color-secondary-light: #7c8ef9;
+  --color-primary: #113F67;
+  --color-primary-dark: #0D2F4F;
+  --color-primary-light: #1A5282;
+  --color-secondary: #34699A;
+  --color-secondary-dark: #2A547B;
+  --color-secondary-light: #4D81B3;
   
   /* Accent Colors */
-  --color-accent-teal: #81ecec;
-  --color-accent-purple: #a29bfe;
+  --color-accent: #FDF5AA;
+  --color-accent-dark: #FCF088;
+  --color-accent-light: #FEF9CC;
   --color-success: #10b981;
   --color-warning: #fbbf24;
   --color-error: #ef4444;

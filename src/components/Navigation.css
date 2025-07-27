@@ -37,7 +37,7 @@
 .nav-logo {
   cursor: pointer;
   transition: transform var(--transition-base);
-  color: var(--color-gray-900);
+  color: var(--color-primary);
   display: flex;
   align-items: center;
   height: 100%;
@@ -94,16 +94,15 @@
 .nav-cta {
   background: var(--color-primary);
   color: var(--color-white) !important;
-  padding: 10px 20px !important;
+  padding: 8px 20px !important;
   border-radius: var(--radius-base);
   font-weight: var(--font-weight-semibold) !important;
   font-size: var(--font-size-sm);
   transition: all var(--transition-base);
-  height: auto;
+  height: auto !important;
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
   white-space: nowrap;
 }
 
@@ -115,6 +114,33 @@
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
   background: var(--color-primary-dark);
+}
+
+.nav-survey-btn {
+  background: transparent;
+  color: var(--color-primary) !important;
+  border: 2px solid var(--color-primary);
+  padding: 6px 16px !important;
+  border-radius: var(--radius-base);
+  font-weight: var(--font-weight-semibold) !important;
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-base);
+  height: auto !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.nav-survey-btn::after {
+  display: none;
+}
+
+.nav-survey-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  background: var(--color-primary);
+  color: var(--color-white) !important;
 }
 
 .mobile-menu-toggle {

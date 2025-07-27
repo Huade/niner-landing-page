@@ -68,12 +68,13 @@
 }
 
 .hero-title-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #81ecec 50%, #a29bfe 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #B8D4E3 50%, #87CEEB 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
   animation: gradientShift 3s ease-in-out infinite;
+  filter: brightness(1.2);
 }
 
 @keyframes titleReveal {
@@ -103,22 +104,24 @@
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  opacity: 0.95;
-  color: var(--color-white);
+  opacity: 1;
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.5;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .hero-subtitle-highlight {
   font-weight: var(--font-weight-semibold);
-  color: #fff;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(144, 202, 249, 0.3);
 }
 
 .hero-subtitle-accent {
-  color: #81ecec;
-  font-weight: var(--font-weight-medium);
+  color: #B8D4E3;
+  font-weight: var(--font-weight-semibold);
   position: relative;
   white-space: nowrap;
+  text-shadow: 0 0 15px rgba(184, 212, 227, 0.8);
 }
 
 .hero-subtitle-accent::after {
@@ -128,8 +131,9 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #81ecec 0%, #a29bfe 100%);
+  background: linear-gradient(90deg, #B8D4E3 0%, #87CEEB 100%);
   animation: underlineReveal 1s ease-out 0.8s forwards;
+  box-shadow: 0 0 10px rgba(184, 212, 227, 0.8);
 }
 
 @keyframes underlineReveal {
@@ -198,16 +202,17 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-white) 0%, rgba(255, 255, 255, 0.95) 100%);
+  background: var(--color-white);
   color: var(--color-primary);
   border: 2px solid var(--color-white);
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  font-weight: var(--font-weight-bold);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, var(--color-white) 100%);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .btn-primary:active {
@@ -236,27 +241,25 @@
   font-weight: var(--font-weight-medium);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  opacity: 0.9;
+  opacity: 1;
   margin-bottom: var(--spacing-base);
   position: relative;
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 100px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .hero-eyebrow-text {
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(129, 236, 236, 0.9) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: var(--font-weight-semibold);
 }
 
 .problem-icon {
   width: 16px;
   height: 16px;
+  filter: brightness(1.2) drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
 }
 
 .pulse-icon {

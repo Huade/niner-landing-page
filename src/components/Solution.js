@@ -21,9 +21,9 @@ const Solution = () => {
                 <svg viewBox="0 0 900 220" className="meng-equation" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <linearGradient id="equationGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" style={{stopColor: '#667eea', stopOpacity: 0.1}}/>
-                      <stop offset="50%" style={{stopColor: '#667eea', stopOpacity: 0.05}}/>
-                      <stop offset="100%" style={{stopColor: '#667eea', stopOpacity: 0.1}}/>
+                      <stop offset="0%" style={{stopColor: '#34699A', stopOpacity: 0.1}}/>
+                      <stop offset="50%" style={{stopColor: '#34699A', stopOpacity: 0.05}}/>
+                      <stop offset="100%" style={{stopColor: '#34699A', stopOpacity: 0.1}}/>
                     </linearGradient>
                     <filter id="textShadow">
                       <feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
@@ -60,11 +60,11 @@ const Solution = () => {
                       <tspan fontStyle="italic" fontWeight="500">ρ</tspan>
                       <tspan fontSize="22" dy="6" fill="#4a5568">R,Y</tspan>
                     </text>
-                    <path d="M -20 110 Q 25 130 70 110" stroke="#667eea" strokeWidth="2" fill="none" opacity="0.6"/>
-                    <text x="25" y="150" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#667eea" textAnchor="middle" fontWeight="500">
+                    <path d="M -20 110 Q 25 130 70 110" stroke="#34699A" strokeWidth="2" fill="none" opacity="0.6"/>
+                    <text x="25" y="150" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#34699A" textAnchor="middle" fontWeight="500">
                       data defect
                     </text>
-                    <text x="25" y="166" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#667eea" textAnchor="middle" fontWeight="500">
+                    <text x="25" y="166" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#34699A" textAnchor="middle" fontWeight="500">
                       correlation
                     </text>
                   </g>
@@ -92,8 +92,8 @@ const Solution = () => {
                     </g>
                     
                     {/* Underbrace */}
-                    <path d="M -10 65 Q 65 85 140 65" stroke="#667eea" strokeWidth="2" fill="none" opacity="0.6" transform="translate(0, 40)"/>
-                    <text x="65" y="145" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#667eea" textAnchor="middle" fontWeight="500">
+                    <path d="M -10 65 Q 65 85 140 65" stroke="#34699A" strokeWidth="2" fill="none" opacity="0.6" transform="translate(0, 40)"/>
+                    <text x="65" y="145" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#34699A" textAnchor="middle" fontWeight="500">
                       data quantity
                     </text>
                   </g>
@@ -107,19 +107,19 @@ const Solution = () => {
                       <tspan fontStyle="italic" fontWeight="500">σ</tspan>
                       <tspan fontSize="22" dy="6" fill="#4a5568">Y</tspan>
                     </text>
-                    <path d="M -15 110 Q 20 130 55 110" stroke="#667eea" strokeWidth="2" fill="none" opacity="0.6"/>
-                    <text x="20" y="150" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#667eea" textAnchor="middle" fontWeight="500">
+                    <path d="M -15 110 Q 20 130 55 110" stroke="#34699A" strokeWidth="2" fill="none" opacity="0.6"/>
+                    <text x="20" y="150" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#34699A" textAnchor="middle" fontWeight="500">
                       data
                     </text>
-                    <text x="20" y="166" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#667eea" textAnchor="middle" fontWeight="500">
+                    <text x="20" y="166" fontFamily="system-ui, -apple-system, sans-serif" fontSize="13" fill="#34699A" textAnchor="middle" fontWeight="500">
                       difficulty
                     </text>
                   </g>
                   
                   {/* Decorative elements */}
-                  <circle cx="850" cy="90" r="3" fill="#667eea" opacity="0.3"/>
-                  <circle cx="860" cy="95" r="2" fill="#667eea" opacity="0.2"/>
-                  <circle cx="855" cy="85" r="2" fill="#667eea" opacity="0.2"/>
+                  <circle cx="850" cy="90" r="3" fill="#34699A" opacity="0.3"/>
+                  <circle cx="860" cy="95" r="2" fill="#34699A" opacity="0.2"/>
+                  <circle cx="855" cy="85" r="2" fill="#34699A" opacity="0.2"/>
                 </svg>
                 
                 <div className="equation-explanation">

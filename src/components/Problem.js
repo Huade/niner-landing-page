@@ -14,12 +14,12 @@ const Problem = () => {
                 {/* Background gradient */}
                 <defs>
                   <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#667eea" stopOpacity="0.1"/>
-                    <stop offset="100%" stopColor="#667eea" stopOpacity="0.02"/>
+                    <stop offset="0%" stopColor="#34699A" stopOpacity="0.1"/>
+                    <stop offset="100%" stopColor="#34699A" stopOpacity="0.02"/>
                   </linearGradient>
                   <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#667eea"/>
-                    <stop offset="100%" stopColor="#764ba2"/>
+                    <stop offset="0%" stopColor="#113F67"/>
+                    <stop offset="100%" stopColor="#34699A"/>
                   </linearGradient>
                 </defs>
                 {/* Grid lines */}
@@ -53,7 +53,7 @@ const Problem = () => {
                       fill="none" stroke="url(#lineGradient)" strokeWidth="3"/>
                 {/* Response rate line - dashed portion (2018-2025) */}
                 <path d="M 310,176 L 370,190" 
-                      fill="none" stroke="#764ba2" strokeWidth="3" strokeDasharray="6,6"/>
+                      fill="none" stroke="#34699A" strokeWidth="3" strokeDasharray="6,6"/>
                 {/* Y-axis label */}
                 <text x="20" y="25" fontSize="12" fill="#666">
                   Response rate
@@ -62,7 +62,7 @@ const Problem = () => {
             </div>
             <div className="crisis-content">
               <h3>Collapse of Response Rates</h3>
-              <p className="crisis-stat">&lt;1%</p>
+              <p className="crisis-stat"><span style={{color: '#113F67', fontWeight: '800', fontSize: '2.5rem'}}>&lt;1%</span></p>
               <p className="crisis-desc">
                 Traditional polling is broken. Major pollsters struggle with sub-1% response rates—burning through 500,000+ calls just to reach 4,000 people.
               </p>
@@ -106,13 +106,13 @@ const Problem = () => {
                     Reality
                   </text>
                   {/* Error bar */}
-                  <line x1="280" y1="80" x2="470" y2="80" stroke="#667eea" strokeWidth="4"/>
-                  <line x1="280" y1="74" x2="280" y2="86" stroke="#667eea" strokeWidth="4"/>
-                  <line x1="470" y1="74" x2="470" y2="86" stroke="#667eea" strokeWidth="4"/>
+                  <line x1="280" y1="80" x2="470" y2="80" stroke="#34699A" strokeWidth="4"/>
+                  <line x1="280" y1="74" x2="280" y2="86" stroke="#34699A" strokeWidth="4"/>
+                  <line x1="470" y1="74" x2="470" y2="86" stroke="#34699A" strokeWidth="4"/>
                   {/* Point */}
-                  <circle cx="375" cy="80" r="7" fill="#667eea"/>
+                  <circle cx="375" cy="80" r="7" fill="#34699A"/>
                   {/* Label */}
-                  <text x="375" y="105" textAnchor="middle" fontSize="12" fill="#667eea">
+                  <text x="375" y="105" textAnchor="middle" fontSize="12" fill="#34699A">
                     Everyone
                   </text>
                 </g>
@@ -120,7 +120,7 @@ const Problem = () => {
             </div>
             <div className="crisis-content">
               <h3>Non-Ignorable Non-Response</h3>
-              <p className="crisis-stat">Systematic Bias</p>
+              <p className="crisis-stat"><span style={{color: '#113F67', fontWeight: '800', fontSize: '2.5rem'}}>Systematic Bias</span></p>
               <p className="crisis-desc">
                 The 99% who don't answer aren't just missing data points. They're systematically different from those who do, creating a built-in bias that no amount of weighting can fix.
               </p>
@@ -129,15 +129,15 @@ const Problem = () => {
           {/* Crisis 3: Confidently Wrong */}
           <div className="crisis-item">
             <div className="crisis-visual">
-              <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="-10 -10 410 210" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="samplingGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#667eea" stopOpacity="0.1"/>
-                    <stop offset="100%" stopColor="#667eea" stopOpacity="0.02"/>
+                    <stop offset="0%" stopColor="#34699A" stopOpacity="0.1"/>
+                    <stop offset="100%" stopColor="#34699A" stopOpacity="0.02"/>
                   </linearGradient>
                   <linearGradient id="curveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#667eea"/>
-                    <stop offset="100%" stopColor="#764ba2"/>
+                    <stop offset="0%" stopColor="#113F67"/>
+                    <stop offset="100%" stopColor="#34699A"/>
                   </linearGradient>
                 </defs>
                 {/* Grid lines */}
@@ -160,11 +160,11 @@ const Problem = () => {
                   <text x="370" y="165" fontSize="11" fill="#666" textAnchor="middle">Large</text>
                 </g>
                 {/* Y-axis label */}
-                <text x="20" y="15" fontSize="12" fill="#666">
+                <text x="20" y="10" fontSize="12" fill="#666">
                   Sampling error
                 </text>
                 {/* X-axis label */}
-                <text x="220" y="175" fontSize="12" fill="#666" textAnchor="middle">
+                <text x="220" y="185" fontSize="12" fill="#666" textAnchor="middle">
                   Population Size
                 </text>
                 {/* Area under curve */}
@@ -186,7 +186,7 @@ const Problem = () => {
             </div>
             <div className="crisis-content">
               <h3>The Big Data Paradox</h3>
-              <p className="crisis-stat">More Data, More Wrong</p>
+              <p className="crisis-stat"><span style={{color: '#113F67', fontWeight: '800', fontSize: '2.5rem'}}>More Data, More Wrong</span></p>
               <p className="crisis-desc">
                 Without taking data quality into account, population inferences 
                 with Big Data are subject to a Big Data Paradox: the more the data, the surer we fool ourselves.

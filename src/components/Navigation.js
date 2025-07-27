@@ -31,7 +31,8 @@ const Navigation = () => {
           <a href="#solution" onClick={() => setMobileMenuOpen(false)}>Solution</a>
           <a href="#industries" onClick={() => setMobileMenuOpen(false)}>Industries</a>
           <a href="#faq" onClick={() => setMobileMenuOpen(false)}>FAQ</a>
-          <a href="#contact" className="nav-cta" style={{padding: '10px 20px'}} onClick={() => setMobileMenuOpen(false)}>Request a Demo</a>
+          <a href="#contact" className="nav-cta" onClick={() => setMobileMenuOpen(false)}>Request a Demo</a>
+          <a href="#survey" className="nav-survey-btn" onClick={() => setMobileMenuOpen(false)}>Take survey with NINER AI</a>
         </div>
         
         <button 
