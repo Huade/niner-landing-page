@@ -43,7 +43,7 @@ const Problem: React.FC = () => {
     <section id="problem" className="py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6">
             The Hidden Crisis in Opinion Research
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -109,7 +109,7 @@ const Problem: React.FC = () => {
                   </svg>
                 </div>
                 <div className="order-1 lg:order-2">
-                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">Collapse of Response Rates</h3>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-blue-900 mb-3">Collapse of Response Rates</h3>
                   <p className="text-5xl lg:text-6xl font-extrabold text-blue-900 mb-4">&lt;1%</p>
                   <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
                     Traditional polling is broken. Major pollsters struggle with sub-1% response rates—burning through 500,000+ calls just to reach 4,000 people.
@@ -127,7 +127,7 @@ const Problem: React.FC = () => {
             <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300 relative">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center relative">
                 <div className="order-2 lg:order-1">
-                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">Non-Ignorable Non-Response</h3>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-blue-900 mb-3">Non-Ignorable Non-Response</h3>
                   <p className="text-4xl lg:text-5xl font-extrabold text-blue-900 mb-4">Systematic Bias</p>
                   <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
                     The 99% who don't answer aren't just missing data points. They're systematically different from those who do, creating a built-in bias that no amount of weighting can fix.
@@ -249,7 +249,7 @@ const Problem: React.FC = () => {
                   </svg>
                 </div>
                 <div className="order-1 lg:order-2">
-                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">The Big Data Paradox</h3>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-blue-900 mb-3">The Big Data Paradox</h3>
                   <p className="text-4xl lg:text-5xl font-extrabold text-blue-900 mb-4">More Data, More Wrong</p>
                   <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
                     Without taking data quality into account, population inferences 
@@ -268,7 +268,7 @@ const Problem: React.FC = () => {
             <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300 relative">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center relative">
                 <div className="order-2 lg:order-1">
-                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">The Cost Trap</h3>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-blue-900 mb-3">The Cost Trap</h3>
                   <p className="text-4xl lg:text-5xl font-extrabold text-blue-900 mb-4">Accurate or Affordable</p>
                   <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
                     Choose your poison: Spend hundreds of thousands on probability polls, or save money with non-probability samples that can't be trusted.
