@@ -173,106 +173,14 @@ const Solution: React.FC = () => {
             The Niner Breakthrough
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Three innovations that fix polling forever
+            Four innovations that fix polling forever
           </p>
         </div>
         
         <div className="space-y-20">
-          {/* Feature 1: Natural Conversations */}
+          {/* Feature 1: Revolutionary Sampling */}
           <div 
             ref={(el) => { if (el) blocksRef.current[0] = el; }}
-            className="relative"
-          >
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="p-8 lg:p-12">
-                <h3 className="text-3xl font-bold text-blue-900 mb-8 text-center">Natural Conversations</h3>
-                
-                {/* Natural Conversations Content */}
-                <div className="max-w-3xl mx-auto">
-                  <div className="text-center mb-8">
-                    <div className="inline-block p-6 bg-blue-50 rounded-2xl mb-4">
-                      <svg className="w-16 h-16 mx-auto text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                      </svg>
-                    </div>
-                    <div className="space-y-2">
-                      <p className="text-2xl font-bold text-blue-600">AI-Powered Conversations</p>
-                      <p className="text-lg text-gray-600">Natural dialogue that adapts to each respondent</p>
-                    </div>
-                  </div>
-                  
-                  {/* Conversation Demo */}
-                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl shadow-inner max-w-lg mx-auto">
-                    <div className="max-w-sm mx-auto space-y-3 conversation-container" ref={conversationRef}>
-                      <div className="message bg-blue-600 text-white px-4 py-3 rounded-2xl rounded-tl-md text-sm shadow-md max-w-[85%]">
-                        Hi! I'm Polly. I'm here to learn about your views on government spending. What's your take on the current budget?
-                      </div>
-                      <div className="message bg-white text-gray-800 px-4 py-3 rounded-2xl rounded-tr-md text-sm shadow-md max-w-[85%] ml-auto">
-                        honestly its crazy high. we're spending money we don't have
-                      </div>
-                      <div className="message bg-blue-600 text-white px-4 py-3 rounded-2xl rounded-tl-md text-sm shadow-md max-w-[85%]">
-                        I hear you - spending beyond our means is concerning. What specific areas do you think are most wasteful?
-                      </div>
-                      <div className="message bg-white text-gray-800 px-4 py-3 rounded-2xl rounded-tr-md text-sm shadow-md max-w-[85%] ml-auto">
-                        foreign aid while we have homeless vets. infrastructure falling apart but we send billions overseas
-                      </div>
-                      <div className="message bg-blue-600 text-white px-4 py-3 rounded-2xl rounded-tl-md text-sm shadow-md max-w-[85%]">
-                        That's a powerful point about priorities. If you could redirect that foreign aid money, where would you invest it first?
-                      </div>
-                      <div className="message bg-white text-gray-800 px-4 py-3 rounded-2xl rounded-tr-md text-sm shadow-md max-w-[85%] ml-auto">
-                        fix our roads and bridges first. take care of americans before everyone else
-                      </div>
-                    </div>
-                    
-                    {/* Typing indicator */}
-                    <div className="typing-indicator flex items-center gap-2 mt-4 px-4">
-                      <div className="flex gap-1">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
-                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
-                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
-                      </div>
-                      <span className="text-xs text-gray-500">Polly is typing...</span>
-                    </div>
-                  </div>
-                  
-                  {/* Key Benefits */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <h4 className="font-semibold text-blue-900 mb-1">Deep Insights</h4>
-                      <p className="text-sm text-gray-600">Uncover the "why" behind opinions with follow-up questions</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                      </div>
-                      <h4 className="font-semibold text-blue-900 mb-1">Natural Flow</h4>
-                      <p className="text-sm text-gray-600">Conversations that feel human, not robotic surveys</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                        </svg>
-                      </div>
-                      <h4 className="font-semibold text-blue-900 mb-1">Adaptive Intelligence</h4>
-                      <p className="text-sm text-gray-600">AI adjusts questions based on responses in real-time</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Feature 2: Revolutionary Sampling */}
-          <div 
-            ref={(el) => { if (el) blocksRef.current[1] = el; }}
             className="relative"
           >
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
@@ -288,7 +196,7 @@ const Solution: React.FC = () => {
                       </svg>
                     </div>
                     <div className="space-y-2">
-                      <p className="text-2xl font-bold text-blue-600">Modern Sampling + AI</p>
+                      <p className="text-2xl font-bold text-blue-600">State-of-the-Art Methodologies</p>
                       <p className="text-lg text-gray-600">We don't guess who's missing—we measure them scientifically</p>
                     </div>
                   </div>
@@ -477,24 +385,300 @@ const Solution: React.FC = () => {
                   )}
                 </div>
 
-                {/* Bottom Summary */}
-                <div className="mt-12 text-center bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-8">
+                {/* Bottom Line */}
+                <div className="mt-12 text-center">
                   <p className="text-xl font-semibold text-blue-900 mb-2">
                     The Bottom Line
                   </p>
                   <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                    Our revolutionary sampling catches what everyone else misses—delivering 
-                    <span className="font-bold text-blue-600"> dramatically better accuracy</span> with 
-                    <span className="font-bold text-blue-900"> deeper insights</span>.
+                    Traditional polls are mathematically broken. We fixed the math. By measuring who doesn't respond—not just 
+                    guessing—we deliver <span className="font-bold text-blue-600">accuracy that captures reality</span>, not just the vocal minority. 
+                    This isn't an upgrade. It's <span className="font-bold text-blue-900">the future of polling</span>.
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Feature 3: Economics Revolution */}
+          {/* Feature 2: Objective-Driven Surveys */}
+          <div 
+            ref={(el) => { if (el) blocksRef.current[1] = el; }}
+            className="relative"
+          >
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="p-8 lg:p-12">
+                <h3 className="text-3xl font-bold text-blue-900 mb-8 text-center">Objective-Driven Surveys</h3>
+                
+                {/* Objective-Driven Content */}
+                <div className="max-w-6xl mx-auto">
+                  <div className="text-center mb-8">
+                    <div className="inline-block p-6 bg-blue-50 rounded-2xl mb-4">
+                      <svg className="w-16 h-16 mx-auto text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                      </svg>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-2xl font-bold text-blue-600">You Set Goals, AI Creates Questions</p>
+                      <p className="text-lg text-gray-600">Dynamic surveys that adapt to each respondent in real-time</p>
+                    </div>
+                  </div>
+                  
+                  {/* Visual Comparison */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                    {/* Traditional Approach */}
+                    <div className="bg-gray-50 rounded-2xl p-6">
+                      <h4 className="text-xl font-bold text-gray-700 mb-4 text-center">Traditional Surveys</h4>
+                      <div className="space-y-3">
+                        <div className="bg-white rounded-lg p-4 border border-gray-200">
+                          <p className="text-sm text-gray-600">Q1: How do you rate the president's performance?</p>
+                        </div>
+                        <div className="bg-white rounded-lg p-4 border border-gray-200">
+                          <p className="text-sm text-gray-600">Q2: What is your party affiliation?</p>
+                        </div>
+                        <div className="bg-white rounded-lg p-4 border border-gray-200">
+                          <p className="text-sm text-gray-600">Q3: How likely are you to vote?</p>
+                        </div>
+                        <div className="text-center py-4">
+                          <span className="text-red-500 font-semibold">Same questions for everyone</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Niner Approach */}
+                    <div className="bg-white rounded-2xl p-6 border-2 border-blue-400">
+                      <h4 className="text-xl font-bold text-blue-900 mb-4 text-center">Niner's Approach</h4>
+                      <div className="space-y-3">
+                        <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                          <p className="text-sm font-semibold text-blue-900 mb-1">1. You Define the Goal:</p>
+                          <p className="text-sm text-gray-700 italic">"Understand voter sentiment on economic policy"</p>
+                        </div>
+                        <div className="text-center py-1">
+                          <svg className="w-5 h-5 text-blue-600 mx-auto animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                          </svg>
+                        </div>
+                        <div className="bg-blue-100 rounded-lg p-4 border border-blue-300">
+                          <p className="text-sm font-semibold text-blue-900 mb-2">2. AI Creates Measurement Variables:</p>
+                          <div className="space-y-1 text-sm text-gray-700">
+                            <div className="flex items-start">
+                              <span className="text-blue-600 mr-2">•</span>
+                              <span>Economic confidence index</span>
+                            </div>
+                            <div className="flex items-start">
+                              <span className="text-blue-600 mr-2">•</span>
+                              <span>Policy preference scores</span>
+                            </div>
+                            <div className="flex items-start">
+                              <span className="text-blue-600 mr-2">•</span>
+                              <span>Personal impact assessment</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-center py-1">
+                          <svg className="w-5 h-5 text-blue-600 mx-auto animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                          </svg>
+                        </div>
+                        <div className="bg-gradient-to-b from-blue-50 to-white rounded-lg p-4 border border-blue-200">
+                          <p className="text-sm font-semibold text-blue-900 mb-2">3. Dynamic Question Generation:</p>
+                          <p className="text-xs text-gray-600 mb-2">Personalized for each respondent based on:</p>
+                          <div className="space-y-1 text-xs text-gray-700">
+                            <span className="block">• Profile, location, current events</span>
+                            <span className="block">• Narrow AI analyzes responses</span>
+                            <span className="block">• Derives precise outcome scores</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Key Features Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                        </svg>
+                      </div>
+                      <h4 className="font-semibold text-blue-900 mb-1">Smart Measurement Design</h4>
+                      <p className="text-sm text-gray-600">AI identifies the exact variables needed to measure your specific objectives</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                      </div>
+                      <h4 className="font-semibold text-blue-900 mb-1">Narrow AI Scoring</h4>
+                      <p className="text-sm text-gray-600">Specialized AI models trained to derive precise scores for each outcome variable</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                      </div>
+                      <h4 className="font-semibold text-blue-900 mb-1">Dynamic Personalization</h4>
+                      <p className="text-sm text-gray-600">Questions adapt in real-time based on respondent context and current events</p>
+                    </div>
+                  </div>
+                  
+                  {/* Example Visualization */}
+                  <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-8">
+                    <h4 className="text-xl font-bold text-blue-900 mb-6 text-center">How It Works in Practice</h4>
+                    <div className="space-y-4">
+                      <div className="bg-white rounded-xl p-6 shadow-md">
+                        <div className="flex items-start gap-4">
+                          <span className="inline-flex items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-full font-bold flex-shrink-0">1</span>
+                          <div className="flex-1">
+                            <h5 className="font-semibold text-blue-900 mb-2">You Set the Goal</h5>
+                            <p className="text-sm text-gray-700 italic">"Understand how inflation impacts voting intentions across demographics"</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-white rounded-xl p-6 shadow-md">
+                        <div className="flex items-start gap-4">
+                          <span className="inline-flex items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-full font-bold flex-shrink-0">2</span>
+                          <div className="flex-1">
+                            <h5 className="font-semibold text-blue-900 mb-2">AI Designs Measurements</h5>
+                            <p className="text-sm text-gray-700">Creates variables: inflation concern level, personal financial impact score, policy support index, voting likelihood</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-white rounded-xl p-6 shadow-md">
+                        <div className="flex items-start gap-4">
+                          <span className="inline-flex items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-full font-bold flex-shrink-0">3</span>
+                          <div className="flex-1">
+                            <h5 className="font-semibold text-blue-900 mb-2">Dynamic Questions & Narrow AI Analysis</h5>
+                            <p className="text-sm text-gray-700">Personalized questions extract nuanced data. Narrow AI models analyze responses to derive precise outcome scores.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Bottom Line */}
+                  <div className="mt-12 text-center">
+                    <p className="text-xl font-semibold text-blue-900 mb-2">
+                      The Power of Objective-Driven Surveys
+                    </p>
+                    <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                      Stop writing questions. Start defining goals. Let AI create the perfect survey for each respondent, 
+                      ensuring <span className="font-bold text-blue-600">authentic responses</span> and <span className="font-bold text-blue-900">actionable insights</span>.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature 3: Natural Conversations */}
           <div 
             ref={(el) => { if (el) blocksRef.current[2] = el; }}
+            className="relative"
+          >
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="p-8 lg:p-12">
+                <h3 className="text-3xl font-bold text-blue-900 mb-8 text-center">Natural Conversations</h3>
+                
+                {/* Natural Conversations Content */}
+                <div className="max-w-3xl mx-auto">
+                  <div className="text-center mb-8">
+                    <div className="inline-block p-6 bg-blue-50 rounded-2xl mb-4">
+                      <svg className="w-16 h-16 mx-auto text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                      </svg>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-2xl font-bold text-blue-600">AI-Powered Conversations</p>
+                      <p className="text-lg text-gray-600">Natural dialogue that adapts to each respondent</p>
+                    </div>
+                  </div>
+                  
+                  {/* Conversation Demo */}
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl shadow-inner max-w-lg mx-auto">
+                    <div className="max-w-sm mx-auto space-y-3 conversation-container" ref={conversationRef}>
+                      <div className="message bg-blue-600 text-white px-4 py-3 rounded-2xl rounded-tl-md text-sm shadow-md max-w-[85%]">
+                        Hi! I'm Polly. I'm here to learn about your views on government spending. What's your take on the current budget?
+                      </div>
+                      <div className="message bg-white text-gray-800 px-4 py-3 rounded-2xl rounded-tr-md text-sm shadow-md max-w-[85%] ml-auto">
+                        honestly its crazy high. we're spending money we don't have
+                      </div>
+                      <div className="message bg-blue-600 text-white px-4 py-3 rounded-2xl rounded-tl-md text-sm shadow-md max-w-[85%]">
+                        I hear you - spending beyond our means is concerning. What specific areas do you think are most wasteful?
+                      </div>
+                      <div className="message bg-white text-gray-800 px-4 py-3 rounded-2xl rounded-tr-md text-sm shadow-md max-w-[85%] ml-auto">
+                        foreign aid while we have homeless vets. infrastructure falling apart but we send billions overseas
+                      </div>
+                      <div className="message bg-blue-600 text-white px-4 py-3 rounded-2xl rounded-tl-md text-sm shadow-md max-w-[85%]">
+                        That's a powerful point about priorities. If you could redirect that foreign aid money, where would you invest it first?
+                      </div>
+                      <div className="message bg-white text-gray-800 px-4 py-3 rounded-2xl rounded-tr-md text-sm shadow-md max-w-[85%] ml-auto">
+                        fix our roads and bridges first. take care of americans before everyone else
+                      </div>
+                    </div>
+                    
+                    {/* Typing indicator */}
+                    <div className="typing-indicator flex items-center gap-2 mt-4 px-4">
+                      <div className="flex gap-1">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
+                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
+                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
+                      </div>
+                      <span className="text-xs text-gray-500">Polly is typing...</span>
+                    </div>
+                  </div>
+                  
+                  {/* Key Benefits */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <h4 className="font-semibold text-blue-900 mb-1">Deep Insights</h4>
+                      <p className="text-sm text-gray-600">Uncover the "why" behind opinions with follow-up questions</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                      </div>
+                      <h4 className="font-semibold text-blue-900 mb-1">Natural Flow</h4>
+                      <p className="text-sm text-gray-600">Conversations that feel human, not robotic surveys</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                      </div>
+                      <h4 className="font-semibold text-blue-900 mb-1">Adaptive Intelligence</h4>
+                      <p className="text-sm text-gray-600">AI adjusts questions based on responses in real-time</p>
+                    </div>
+                  </div>
+                  
+                  {/* Bottom Line */}
+                  <div className="mt-12 text-center">
+                    <p className="text-xl font-semibold text-blue-900 mb-2">
+                      The Human Touch That Scales
+                    </p>
+                    <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                      Natural conversations unlock honest opinions. People share their real thoughts when they're 
+                      <span className="font-bold text-blue-600"> genuinely engaged</span>, not filling out 
+                      <span className="font-bold text-blue-900"> robotic forms</span>.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature 4: Economics Revolution */}
+          <div 
+            ref={(el) => { if (el) blocksRef.current[3] = el; }}
             className="relative"
           >
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
@@ -638,13 +822,14 @@ const Solution: React.FC = () => {
                 </div>
                 
                 {/* Bottom Line */}
-                <div className="text-center max-w-3xl mx-auto">
-                  <h4 className="text-3xl font-bold text-blue-900 mb-6">
-                    Why pay more for worse results?
-                  </h4>
-                  <p className="text-xl text-gray-700 leading-relaxed">
+                <div className="mt-12 text-center">
+                  <p className="text-xl font-semibold text-blue-900 mb-2">
+                    Why Pay More for Worse Results?
+                  </p>
+                  <p className="text-lg text-gray-700 max-w-3xl mx-auto">
                     Niner delivers superior polling accuracy at a fraction of traditional costs. 
-                    It's not just an improvement—it's a complete transformation of polling economics.
+                    It's not just an improvement—it's a <span className="font-bold text-blue-600">complete transformation</span> of 
+                    <span className="font-bold text-blue-900"> polling economics</span>.
                   </p>
                 </div>
               </div>

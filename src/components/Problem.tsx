@@ -47,7 +47,7 @@ const Problem: React.FC = () => {
             The Hidden Crisis in Opinion Research
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Four fundamental flaws that make traditional polling obsolete
+            Five fundamental flaws that make traditional polling obsolete
           </p>
         </div>
         
@@ -317,6 +317,88 @@ const Problem: React.FC = () => {
                   </text>
                 </g>
                   </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          {/* Crisis 5: Response Quality Crisis */}
+          <div 
+            ref={(el) => { if (el) cardsRef.current[4] = el; }}
+            className="relative">
+            <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 hover:shadow-2xl transition-all duration-300 relative">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center relative">
+                <div className="order-2 lg:order-1">
+                  <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-lg mx-auto">
+                <defs>
+                  <linearGradient id="qualityGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#ef4444" stopOpacity="0.2"/>
+                    <stop offset="100%" stopColor="#ef4444" stopOpacity="0.05"/>
+                  </linearGradient>
+                  <linearGradient id="qualityGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#34699A" stopOpacity="0.2"/>
+                    <stop offset="100%" stopColor="#34699A" stopOpacity="0.05"/>
+                  </linearGradient>
+                </defs>
+                
+                {/* Grid background */}
+                <g className="chart-grid">
+                  {[0, 1, 2, 3, 4, 5].map((i) => (
+                    <line key={`h-${i}`} x1="50" y1={40 + i * 32} x2="350" y2={40 + i * 32} 
+                          stroke="#e0e0e0" strokeWidth="1" strokeDasharray="2,2"/>
+                  ))}
+                </g>
+                
+                {/* Question labels */}
+                <g className="question-labels">
+                  <text x="40" y="56" fontSize="11" fill="#666" textAnchor="end">Q1</text>
+                  <text x="40" y="88" fontSize="11" fill="#666" textAnchor="end">Q2</text>
+                  <text x="40" y="120" fontSize="11" fill="#666" textAnchor="end">Q3</text>
+                  <text x="40" y="152" fontSize="11" fill="#666" textAnchor="end">Q4</text>
+                  <text x="40" y="184" fontSize="11" fill="#666" textAnchor="end">Q5</text>
+                </g>
+                
+                {/* Response options labels */}
+                <g className="option-labels">
+                  <text x="100" y="30" fontSize="10" fill="#999" textAnchor="middle">Strongly Disagree</text>
+                  <text x="175" y="30" fontSize="10" fill="#999" textAnchor="middle">Disagree</text>
+                  <text x="250" y="30" fontSize="10" fill="#999" textAnchor="middle">Neutral</text>
+                  <text x="325" y="30" fontSize="10" fill="#999" textAnchor="middle">Agree</text>
+                </g>
+                
+                {/* Careless pattern (straight-lining) */}
+                <g id="careless-pattern">
+                  <text x="200" y="215" fontSize="12" fill="#ef4444" textAnchor="middle" fontWeight="600">
+                    Straight-lining Pattern
+                  </text>
+                  {/* All responses at "Neutral" */}
+                  <rect x="240" y="46" width="20" height="138" fill="url(#qualityGradient1)" rx="10"/>
+                  <circle cx="250" cy="56" r="6" fill="#ef4444"/>
+                  <circle cx="250" cy="88" r="6" fill="#ef4444"/>
+                  <circle cx="250" cy="120" r="6" fill="#ef4444"/>
+                  <circle cx="250" cy="152" r="6" fill="#ef4444"/>
+                  <circle cx="250" cy="184" r="6" fill="#ef4444"/>
+                  <path d="M 250 56 L 250 88 L 250 120 L 250 152 L 250 184" 
+                        stroke="#ef4444" strokeWidth="2" strokeDasharray="3,3" fill="none"/>
+                </g>
+                
+                {/* Thoughtful pattern (varied) */}
+                <g id="thoughtful-pattern" opacity="0.4">
+                  <circle cx="100" cy="56" r="4" fill="#34699A"/>
+                  <circle cx="250" cy="88" r="4" fill="#34699A"/>
+                  <circle cx="175" cy="120" r="4" fill="#34699A"/>
+                  <circle cx="325" cy="152" r="4" fill="#34699A"/>
+                  <circle cx="250" cy="184" r="4" fill="#34699A"/>
+                </g>
+                  </svg>
+                </div>
+                <div className="order-1 lg:order-2">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-blue-900 mb-3">Response Quality Crisis</h3>
+                  <p className="text-4xl lg:text-5xl font-extrabold text-blue-900 mb-4">Careless & Rushed</p>
+                  <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
+                    Even those who respond often provide low-quality data. Straight-lining, satisficing, and random clicking plague surveys as respondents rush through with insufficient effort.
+                  </p>
                 </div>
               </div>
             </div>
