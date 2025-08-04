@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 interface Industry {
   icon: React.ReactNode | null;
@@ -6,7 +6,7 @@ interface Industry {
   description: string;
 }
 
-const Industries: React.FC = () => {
+const Industries: React.FC = memo(() => {
   const industries: Industry[] = [
     {
       icon: null,
@@ -70,6 +70,8 @@ const Industries: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+Industries.displayName = 'Industries';
 
 export default Industries;

@@ -1,12 +1,19 @@
-import React from 'react';
+import { lazy, Suspense } from 'react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
-import Results from './components/Results';
 import Problem from './components/Problem';
 import Solution from './components/Solution';
-import Industries from './components/Industries';
-import FAQ from './components/FAQ';
-import Footer from './components/Footer';
+
+const Results = lazy(() => import('./components/Results'));
+const Industries = lazy(() => import('./components/Industries'));
+const FAQ = lazy(() => import('./components/FAQ'));
+const Footer = lazy(() => import('./components/Footer'));
+
+const LoadingSpinner = () => (
+  <div className="flex items-center justify-center py-12">
+    <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 function App() {
   return (
@@ -15,10 +22,18 @@ function App() {
       <Hero />
       <Problem />
       <Solution />
-      <Results />
-      <Industries />
-      <FAQ />
-      <Footer />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Results />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Industries />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <FAQ />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }

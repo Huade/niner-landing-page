@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 interface FAQItem {
   question: string;
   answer: string;
 }
 
-const FAQ: React.FC = () => {
+const FAQ: React.FC = memo(() => {
   const faqs: FAQItem[] = [
     {
       question: "Why are traditional polls failing?",
@@ -58,6 +58,8 @@ const FAQ: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+FAQ.displayName = 'FAQ';
 
 export default FAQ;

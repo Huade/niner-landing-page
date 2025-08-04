@@ -1,172 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
-
-// Counter display component
-const CounterDisplay: React.FC<{ end: number; duration?: number; trigger: HTMLElement | null }> = ({ 
-  end, 
-  duration = 2000, 
-  trigger 
-}) => {
-  const [count, setCount] = useState(0);
-  
-  useEffect(() => {
-    if (!trigger) return;
-    
-    let startTime: number | null = null;
-    let animationFrame: number;
-    
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      
-      setCount(Math.floor(progress * end));
-      
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      }
-    };
-    
-    const scrollTrigger = ScrollTrigger.create({
-      trigger,
-      start: "top 80%",
-      onEnter: () => {
-        animationFrame = requestAnimationFrame(animate);
-      },
-      once: true
-    });
-    
-    return () => {
-      if (animationFrame) cancelAnimationFrame(animationFrame);
-      scrollTrigger.kill();
-    };
-  }, [end, duration, trigger]);
-  
-  return <span>{count}</span>;
-};
+import React, { useState } from 'react';
 
 const Solution: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const blocksRef = useRef<HTMLDivElement[]>([]);
-  const conversationRef = useRef<HTMLDivElement>(null);
   const [expandedSection, setExpandedSection] = useState<number | null>(null);
-
-  useEffect(() => {
-    const blocks = blocksRef.current;
-    
-    blocks.forEach((block, index) => {
-      if (block) {
-        // Main block animation
-        gsap.fromTo(block,
-          {
-            opacity: 0,
-            y: 50,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: block,
-              start: "top 85%",
-              toggleActions: "play none none reverse"
-            },
-            delay: index * 0.2
-          }
-        );
-        
-        // Arrow animation
-        const arrow = block.querySelector('.transform-arrow');
-        if (arrow) {
-          gsap.to(arrow, {
-            x: 10,
-            duration: 1.5,
-            repeat: -1,
-            yoyo: true,
-            ease: "power1.inOut",
-            scrollTrigger: {
-              trigger: block,
-              start: "top 80%",
-              toggleActions: "play pause resume pause"
-            }
-          });
-        }
-        
-        // Particle animation
-        const particles = block.querySelectorAll('.particle');
-        particles.forEach((particle, i) => {
-          gsap.to(particle, {
-            x: 40,
-            opacity: 0,
-            duration: 2,
-            repeat: -1,
-            delay: i * 0.3,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: block,
-              start: "top 80%",
-              toggleActions: "play pause resume pause"
-            }
-          });
-        });
-      }
-    });
-
-    // Conversation animation
-    if (conversationRef.current) {
-      const messages = conversationRef.current.querySelectorAll('.message');
-      const typingIndicator = conversationRef.current.parentElement?.querySelector('.typing-indicator');
-      
-      // Initially hide all messages and typing indicator
-      gsap.set(messages, { opacity: 0, y: 20 });
-      if (typingIndicator) {
-        gsap.set(typingIndicator, { opacity: 0, y: 10 });
-      }
-      
-      // Create scroll trigger for conversation
-      ScrollTrigger.create({
-        trigger: conversationRef.current,
-        start: "top 80%",
-        onEnter: () => {
-          const tl = gsap.timeline();
-          
-          // Animate messages first
-          tl.to(messages, {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.8,
-            ease: "power2.out"
-          });
-          
-          // Then show typing indicator after all messages
-          if (typingIndicator) {
-            tl.to(typingIndicator, {
-              opacity: 1,
-              y: 0,
-              duration: 0.4,
-              ease: "power2.out"
-            }, "+=0.3");
-          }
-        },
-        once: true
-      });
-    }
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
 
   const toggleExpand = (index: number) => {
     setExpandedSection(expandedSection === index ? null : index);
   };
 
   return (
-    <section id="solution" className="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden" ref={sectionRef}>
+    <section id="solution" className="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4">
@@ -179,10 +21,7 @@ const Solution: React.FC = () => {
         
         <div className="space-y-20">
           {/* Feature 1: Revolutionary Sampling */}
-          <div 
-            ref={(el) => { if (el) blocksRef.current[0] = el; }}
-            className="relative"
-          >
+          <div className="relative">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="p-8 lg:p-12">
                 <h3 className="text-3xl font-bold text-blue-900 mb-8 text-center">Revolutionary Sampling</h3>
@@ -401,10 +240,7 @@ const Solution: React.FC = () => {
           </div>
 
           {/* Feature 2: Objective-Driven Surveys */}
-          <div 
-            ref={(el) => { if (el) blocksRef.current[1] = el; }}
-            className="relative"
-          >
+          <div className="relative">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="p-8 lg:p-12">
                 <h3 className="text-3xl font-bold text-blue-900 mb-8 text-center">Objective-Driven Surveys</h3>
@@ -573,10 +409,7 @@ const Solution: React.FC = () => {
           </div>
 
           {/* Feature 3: Natural Conversations */}
-          <div 
-            ref={(el) => { if (el) blocksRef.current[2] = el; }}
-            className="relative"
-          >
+          <div className="relative">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="p-8 lg:p-12">
                 <h3 className="text-3xl font-bold text-blue-900 mb-8 text-center">Natural Conversations</h3>
@@ -597,7 +430,7 @@ const Solution: React.FC = () => {
                   
                   {/* Conversation Demo */}
                   <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl shadow-inner max-w-lg mx-auto">
-                    <div className="max-w-sm mx-auto space-y-3 conversation-container" ref={conversationRef}>
+                    <div className="max-w-sm mx-auto space-y-3 conversation-container">
                       <div className="message bg-blue-600 text-white px-4 py-3 rounded-2xl rounded-tl-md text-sm shadow-md max-w-[85%]">
                         Hi! I'm Polly. I'm here to learn about your views on government spending. What's your take on the current budget?
                       </div>
@@ -677,10 +510,7 @@ const Solution: React.FC = () => {
           </div>
 
           {/* Feature 4: Economics Revolution */}
-          <div 
-            ref={(el) => { if (el) blocksRef.current[3] = el; }}
-            className="relative"
-          >
+          <div className="relative">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="p-8 lg:p-12">
                 <h3 className="text-3xl font-bold text-blue-900 mb-8 text-center">Economic Revolution</h3>

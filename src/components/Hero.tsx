@@ -1,21 +1,31 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useCallback, memo } from 'react';
 import gsap from 'gsap';
+import { useRotatingBadges } from '@/hooks/useRotatingBadges';
 
-const Hero: React.FC = () => {
+const Hero: React.FC = memo(() => {
   const heroRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const badgesRef = useRef<HTMLDivElement>(null);
-  const [currentBadgeIndex, setCurrentBadgeIndex] = useState(0);
-
-  const badges = [
-    "Co-founded by Dr. Michael Bailey • Walsh Professor at Georgetown",
-    "Georgetown University • McCourt School of Public Policy",
-    "Published in Political Analysis 2025 • Cambridge University Press",
-    "AI-Powered • Scientifically Validated",
-    "Real-Time Results • Deeper Insights"
-  ];
+  const { currentIndex: currentBadgeIndex, badges } = useRotatingBadges({
+    badges: [
+      "Co-founded by Dr. Michael Bailey • Walsh Professor at Georgetown",
+      "Georgetown University • McCourt School of Public Policy",
+      "Published in Political Analysis 2025 • Cambridge University Press",
+      "AI-Powered • Scientifically Validated",
+      "Real-Time Results • Deeper Insights"
+    ],
+    intervalMs: 5000
+  });
+  
+  const handleButtonHover = useCallback((button: Element, scale: number) => {
+    gsap.to(button, {
+      scale,
+      duration: 0.3,
+      ease: "power2.out"
+    });
+  }, []);
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -49,34 +59,22 @@ const Hero: React.FC = () => {
 
     const buttons = ctaRef.current?.querySelectorAll('button');
     buttons?.forEach(button => {
-      button.addEventListener('mouseenter', () => {
-        gsap.to(button, {
-          scale: 1.05,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      });
-
-      button.addEventListener('mouseleave', () => {
-        gsap.to(button, {
-          scale: 1,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      });
+      const handleEnter = () => handleButtonHover(button, 1.05);
+      const handleLeave = () => handleButtonHover(button, 1);
+      
+      button.addEventListener('mouseenter', handleEnter);
+      button.addEventListener('mouseleave', handleLeave);
+      
+      return () => {
+        button.removeEventListener('mouseenter', handleEnter);
+        button.removeEventListener('mouseleave', handleLeave);
+      };
     });
-
-
-    // Badge rotation with fade effect for consistent direction
-    const badgeInterval = setInterval(() => {
-      setCurrentBadgeIndex((prev) => (prev + 1) % badges.length);
-    }, 5000);
 
     return () => {
       tl.kill();
-      clearInterval(badgeInterval);
     };
-  }, [badges.length]);
+  }, [handleButtonHover]);
 
 
   return (
@@ -99,13 +97,17 @@ const Hero: React.FC = () => {
         </p>
         
         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="group px-8 py-4 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
+          <button 
+            className="group px-8 py-4 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
+            aria-label="See AI Polling in Action">
             <span>See AI Polling in Action</span>
             <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
           </button>
-          <button className="group px-8 py-4 bg-transparent border-2 border-gray-400 hover:border-white text-gray-300 hover:text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
+          <button 
+            className="group px-8 py-4 bg-transparent border-2 border-gray-400 hover:border-white text-gray-300 hover:text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
+            aria-label="Read the Research">
             <span>Read the Research</span>
             <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -130,6 +132,8 @@ const Hero: React.FC = () => {
       
     </section>
   );
-};
+});
+
+Hero.displayName = 'Hero';
 
 export default Hero;

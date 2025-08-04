@@ -200,7 +200,7 @@ const Results: React.FC = () => {
               <div key={research.id} className="relative lg:pl-32">
                 {/* Year Badge - Left aligned on desktop */}
                 <div 
-                  ref={el => yearBadgesRef.current[index] = el}
+                  ref={el => { if (el) yearBadgesRef.current[index] = el; }}
                   className="lg:absolute lg:left-12 lg:top-6 mb-4 lg:mb-0"
                 >
                   <div className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full w-14 h-14 font-bold text-base shadow-lg">
@@ -210,7 +210,7 @@ const Results: React.FC = () => {
                   
                 {/* Card Content - Full width on desktop */}
                 <div 
-                  ref={el => cardsRef.current[index] = el}
+                  ref={el => { if (el) cardsRef.current[index] = el; }}
                   className="w-full"
                 >
                     <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
