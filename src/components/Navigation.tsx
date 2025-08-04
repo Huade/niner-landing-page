@@ -14,6 +14,19 @@ const Navigation: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offsetTop = element.offsetTop - 80; // Offset for fixed navigation
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+      setMobileMenuOpen(false);
+    }
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled ? 'bg-white/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'
@@ -51,6 +64,7 @@ const Navigation: React.FC = () => {
             <div className="flex items-center space-x-8">
               <a 
                 href="#problem" 
+                onClick={(e) => scrollToSection(e, 'problem')}
                 className={`font-medium transition-colors duration-200 hover:text-blue-600 ${
                   scrolled ? 'text-gray-700' : 'text-white'
                 }`}
@@ -59,6 +73,7 @@ const Navigation: React.FC = () => {
               </a>
               <a 
                 href="#solution" 
+                onClick={(e) => scrollToSection(e, 'solution')}
                 className={`font-medium transition-colors duration-200 hover:text-blue-600 ${
                   scrolled ? 'text-gray-700' : 'text-white'
                 }`}
@@ -67,6 +82,7 @@ const Navigation: React.FC = () => {
               </a>
               <a 
                 href="#industries" 
+                onClick={(e) => scrollToSection(e, 'industries')}
                 className={`font-medium transition-colors duration-200 hover:text-blue-600 ${
                   scrolled ? 'text-gray-700' : 'text-white'
                 }`}
@@ -75,6 +91,7 @@ const Navigation: React.FC = () => {
               </a>
               <a 
                 href="#faq" 
+                onClick={(e) => scrollToSection(e, 'faq')}
                 className={`font-medium transition-colors duration-200 hover:text-blue-600 ${
                   scrolled ? 'text-gray-700' : 'text-white'
                 }`}
@@ -83,6 +100,7 @@ const Navigation: React.FC = () => {
               </a>
               <a 
                 href="#contact" 
+                onClick={(e) => scrollToSection(e, 'contact')}
                 className="ml-4 px-6 py-2.5 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-semibold rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
               >
                 Request a Demo
@@ -117,28 +135,28 @@ const Navigation: React.FC = () => {
         <div className="px-4 pt-2 pb-3 space-y-1 bg-white shadow-lg">
           <a 
             href="#problem" 
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => scrollToSection(e, 'problem')}
             className="block px-3 py-2 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
           >
             Problem
           </a>
           <a 
             href="#solution" 
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => scrollToSection(e, 'solution')}
             className="block px-3 py-2 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
           >
             Solution
           </a>
           <a 
             href="#industries" 
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => scrollToSection(e, 'industries')}
             className="block px-3 py-2 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
           >
             Industries
           </a>
           <a 
             href="#faq" 
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => scrollToSection(e, 'faq')}
             className="block px-3 py-2 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
           >
             FAQ
@@ -146,7 +164,7 @@ const Navigation: React.FC = () => {
           <a 
             href="#contact" 
             className="block px-3 py-2.5 mt-4 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-semibold rounded-lg text-center transition-all duration-300 shadow-md hover:shadow-lg"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => scrollToSection(e, 'contact')}
           >
             Request a Demo
           </a>
