@@ -174,7 +174,7 @@ const Results: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="results" className="py-16 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
+    <section ref={sectionRef} id="research" className="py-16 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Compact Header */}
         <div className="text-center mb-12">

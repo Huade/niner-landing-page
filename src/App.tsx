@@ -4,7 +4,7 @@ import Hero from './components/Hero';
 import Problem from './components/Problem';
 import Solution from './components/Solution';
 
-const Results = lazy(() => import('./components/Results'));
+const Research = lazy(() => import('./components/Research'));
 const Industries = lazy(() => import('./components/Industries'));
 const FAQ = lazy(() => import('./components/FAQ'));
 const Footer = lazy(() => import('./components/Footer'));
@@ -23,7 +23,7 @@ function App() {
       <Problem />
       <Solution />
       <Suspense fallback={<LoadingSpinner />}>
-        <Results />
+        <Research />
       </Suspense>
       <Suspense fallback={<LoadingSpinner />}>
         <Industries />

@@ -1,10 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
+import React, { useRef, useState } from 'react';
 
 const Problem: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   
   const problems = [
@@ -23,11 +20,11 @@ const Problem: React.FC = () => {
       description: "Non-respondents represent a non-random subset of the population. This creates systematic measurement error that cannot be corrected through statistical weighting or post-stratification."
     },
     {
-      id: 'paradox',
-      title: 'Big Data Paradox',
-      highlight: 'Data ≠ Truth',
-      subtitle: 'Quality vs Quantity',
-      description: 'Large sample sizes amplify bias when data quality is compromised. Without accounting for data defect correlation, increased data volume leads to increased confidence in incorrect conclusions.'
+      id: 'quality',
+      title: 'Data Quality Crisis',
+      highlight: 'Compromised',
+      subtitle: 'Response Quality',
+      description: 'Satisficing, straight-lining, and inattentive responding contaminate collected data. Current quality control methods fail to detect sophisticated forms of low-effort responding.'
     },
     {
       id: 'cost',
@@ -35,13 +32,6 @@ const Problem: React.FC = () => {
       highlight: 'Unsustainable',
       subtitle: 'Cost Structure',
       description: "The industry faces an impossible trade-off: probability-based samples that cost hundreds of thousands per study, or non-probability samples with unquantifiable error margins."
-    },
-    {
-      id: 'quality',
-      title: 'Data Quality Crisis',
-      highlight: 'Compromised',
-      subtitle: 'Response Quality',
-      description: 'Satisficing, straight-lining, and inattentive responding contaminate collected data. Current quality control methods fail to detect sophisticated forms of low-effort responding.'
     }
   ];
 
@@ -127,90 +117,6 @@ const Problem: React.FC = () => {
       </g>
     </svg>,
     
-    // The Big Data Paradox
-    <svg viewBox="-10 -10 410 210" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-lg mx-auto">
-      <defs>
-        <linearGradient id="samplingGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#34699A" stopOpacity="0.1"/>
-          <stop offset="100%" stopColor="#34699A" stopOpacity="0.02"/>
-        </linearGradient>
-        <linearGradient id="curveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#113F67"/>
-          <stop offset="100%" stopColor="#34699A"/>
-        </linearGradient>
-      </defs>
-      <g className="chart-grid">
-        {[0, 1, 2, 3, 4].map((y, i) => (
-          <line key={i} x1="50" y1={140 - y * 30} x2="370" y2={140 - y * 30} 
-                stroke="#e0e0e0" strokeWidth="1" strokeDasharray="2,2"/>
-        ))}
-      </g>
-      <g className="chart-labels">
-        <text x="40" y="145" fontSize="11" fill="#999" textAnchor="end">Small</text>
-        <text x="40" y="85" fontSize="11" fill="#999" textAnchor="end">Medium</text>
-        <text x="40" y="25" fontSize="11" fill="#999" textAnchor="end">High</text>
-      </g>
-      <g className="chart-labels">
-        <text x="70" y="165" fontSize="11" fill="#666" textAnchor="middle">Small</text>
-        <text x="370" y="165" fontSize="11" fill="#666" textAnchor="middle">Large</text>
-      </g>
-      <text x="20" y="10" fontSize="12" fill="#666">
-        Sampling error
-      </text>
-      <text x="220" y="185" fontSize="12" fill="#666" textAnchor="middle">
-        Population Size
-      </text>
-      <path d="M 70 140 
-               C 100 120, 130 105, 160 95
-               C 190 87, 220 82, 250 78
-               C 280 75, 310 73, 340 71
-               C 355 70, 370 69, 370 68
-               L 370 140 L 70 140 Z" 
-            fill="url(#samplingGradient)"/>
-      <path d="M 70 140 
-               C 100 120, 130 105, 160 95
-               C 190 87, 220 82, 250 78
-               C 280 75, 310 73, 340 71
-               C 355 70, 370 69, 370 68"
-            stroke="url(#curveGradient)" strokeWidth="3" fill="none"/>
-    </svg>,
-    
-    // The Cost Trap
-    <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-lg mx-auto">
-      <defs>
-        <linearGradient id="costGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#ef4444" stopOpacity="0.8"/>
-          <stop offset="100%" stopColor="#ef4444" stopOpacity="0.2"/>
-        </linearGradient>
-        <linearGradient id="costGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#34699A" stopOpacity="0.8"/>
-          <stop offset="100%" stopColor="#34699A" stopOpacity="0.2"/>
-        </linearGradient>
-      </defs>
-      <line x1="50" y1="200" x2="50" y2="40" stroke="#666" strokeWidth="2"/>
-      <text x="25" y="120" fontSize="12" fill="#666" textAnchor="middle" transform="rotate(-90 25 120)">
-        Cost
-      </text>
-      <text x="45" y="45" fontSize="10" fill="#666" textAnchor="end">High</text>
-      <text x="45" y="195" fontSize="10" fill="#666" textAnchor="end">Low</text>
-      <line x1="50" y1="200" x2="350" y2="200" stroke="#666" strokeWidth="2"/>
-      <text x="200" y="230" fontSize="12" fill="#666" textAnchor="middle">
-        Accuracy
-      </text>
-      <text x="60" y="215" fontSize="10" fill="#666">Low</text>
-      <text x="340" y="215" fontSize="10" fill="#666" textAnchor="end">High</text>
-      <g transform="translate(280, 70)">
-        <text x="0" y="0" fontSize="14" fill="#113F67" textAnchor="middle" fontWeight="700">
-          Probability polls
-        </text>
-      </g>
-      <g transform="translate(120, 170)">
-        <text x="0" y="0" fontSize="14" fill="#34699A" textAnchor="middle" fontWeight="700">
-          Non-probability
-        </text>
-      </g>
-    </svg>,
-    
     // Response Quality Crisis
     <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-lg mx-auto">
       <defs>
@@ -262,60 +168,47 @@ const Problem: React.FC = () => {
         <circle cx="325" cy="152" r="4" fill="#34699A"/>
         <circle cx="250" cy="184" r="4" fill="#34699A"/>
       </g>
+    </svg>,
+    
+    // The Cost Trap
+    <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-lg mx-auto">
+      <defs>
+        <linearGradient id="costGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#ef4444" stopOpacity="0.8"/>
+          <stop offset="100%" stopColor="#ef4444" stopOpacity="0.2"/>
+        </linearGradient>
+        <linearGradient id="costGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#34699A" stopOpacity="0.8"/>
+          <stop offset="100%" stopColor="#34699A" stopOpacity="0.2"/>
+        </linearGradient>
+      </defs>
+      <line x1="50" y1="200" x2="50" y2="40" stroke="#666" strokeWidth="2"/>
+      <text x="25" y="120" fontSize="12" fill="#666" textAnchor="middle" transform="rotate(-90 25 120)">
+        Cost
+      </text>
+      <text x="45" y="45" fontSize="10" fill="#666" textAnchor="end">High</text>
+      <text x="45" y="195" fontSize="10" fill="#666" textAnchor="end">Low</text>
+      <line x1="50" y1="200" x2="350" y2="200" stroke="#666" strokeWidth="2"/>
+      <text x="200" y="230" fontSize="12" fill="#666" textAnchor="middle">
+        Accuracy
+      </text>
+      <text x="60" y="215" fontSize="10" fill="#666">Low</text>
+      <text x="340" y="215" fontSize="10" fill="#666" textAnchor="end">High</text>
+      <g transform="translate(280, 70)">
+        <text x="0" y="0" fontSize="14" fill="#113F67" textAnchor="middle" fontWeight="700">
+          Probability polls
+        </text>
+      </g>
+      <g transform="translate(120, 170)">
+        <text x="0" y="0" fontSize="14" fill="#34699A" textAnchor="middle" fontWeight="700">
+          Non-probability
+        </text>
+      </g>
     </svg>
   ];
 
-  // Auto-advance slideshow
-  useEffect(() => {
-    if (!isPaused) {
-      intervalRef.current = setInterval(() => {
-        setActiveTab((prev) => (prev + 1) % problems.length);
-      }, 5000);
-    }
-
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [isPaused, problems.length]);
-
-  // GSAP animations for card transitions
-  useEffect(() => {
-    if (containerRef.current) {
-      gsap.fromTo(
-        containerRef.current,
-        { opacity: 0, y: 20 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.5,
-          ease: "power2.out"
-        }
-      );
-    }
-  }, [activeTab]);
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        setActiveTab((prev) => (prev - 1 + problems.length) % problems.length);
-        setIsPaused(true);
-      } else if (e.key === 'ArrowRight') {
-        setActiveTab((prev) => (prev + 1) % problems.length);
-        setIsPaused(true);
-      } else if (e.key === ' ') {
-        e.preventDefault();
-        setIsPaused((prev) => !prev);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [problems.length]);
-
   const handleTabClick = (index: number) => {
     setActiveTab(index);
-    setIsPaused(true);
   };
 
   const scrollToSolution = () => {
@@ -342,24 +235,8 @@ const Problem: React.FC = () => {
           </p>
         </div>
 
-        {/* Tab Navigation with Playback Control */}
+        {/* Tab Navigation */}
         <div className="flex justify-center items-center gap-4 mb-8">
-          <button
-            onClick={() => setIsPaused(!isPaused)}
-            className="p-2.5 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-gray-600 hover:text-blue-900 hover:border-blue-200"
-            aria-label={isPaused ? 'Play slideshow' : 'Pause slideshow'}
-          >
-            {isPaused ? (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            ) : (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            )}
-          </button>
           <div className="inline-flex bg-white border border-gray-200 rounded-lg shadow-sm p-1">
             {problems.map((problem, index) => (
               <button
@@ -385,8 +262,6 @@ const Problem: React.FC = () => {
         <div 
           ref={containerRef}
           className="flex-1 bg-white rounded-xl border border-gray-100 shadow-lg p-6 lg:p-10 hover:shadow-xl transition-all duration-300 flex flex-col"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
         >
           <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
             <div className="order-2 lg:order-1 flex items-center justify-center p-4">

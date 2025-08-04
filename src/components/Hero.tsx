@@ -27,6 +27,18 @@ const Hero: React.FC = memo(() => {
     });
   }, []);
 
+  const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offsetTop = element.offsetTop - 80; // Offset for fixed navigation
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  }, []);
+
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
@@ -57,7 +69,7 @@ const Hero: React.FC = memo(() => {
       duration: 0.6
     }, "-=0.2");
 
-    const buttons = ctaRef.current?.querySelectorAll('button');
+    const buttons = ctaRef.current?.querySelectorAll('button, a');
     buttons?.forEach(button => {
       const handleEnter = () => handleButtonHover(button, 1.05);
       const handleLeave = () => handleButtonHover(button, 1);
@@ -105,14 +117,16 @@ const Hero: React.FC = memo(() => {
               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
           </button>
-          <button 
+          <a 
+            href="#research"
+            onClick={(e) => scrollToSection(e, 'research')}
             className="group px-8 py-4 bg-transparent border-2 border-gray-400 hover:border-white text-gray-300 hover:text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
             aria-label="Read the Research">
             <span>Read the Research</span>
             <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
-          </button>
+          </a>
         </div>
         
         <div ref={badgesRef} className="mt-8 h-6 relative">
