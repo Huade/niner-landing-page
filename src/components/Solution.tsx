@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import LottieAnimation from './LottieAnimation';
+import conversationAnimationData from '@/assets/animations/conversation.json';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,7 +28,6 @@ interface FeatureCard {
 
 const Solution: React.FC = () => {
   const [activeTab, setActiveTab] = useState('sampling');
-  const [showDetails, setShowDetails] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   const features: FeatureCard[] = [
@@ -285,56 +286,70 @@ const Solution: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Overview */}
-                <div className="bg-blue-50 rounded-xl p-6 mb-6">
-                  <p className="text-gray-700 leading-relaxed">
-                    {activeTabContent.overview}
-                  </p>
-                </div>
-
-                {/* Key Points */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                  {activeTabContent.keyPoints.map((point, index) => (
-                    <div key={index} className="flex items-start">
-                      <svg className="w-5 h-5 text-blue-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-gray-700 text-sm">{point}</span>
+                {/* Natural Conversations Layout */}
+                {activeTab === 'conversations' ? (
+                  <>
+                    {/* Centered Animation at Top */}
+                    <div className="flex justify-center mb-6">
+                      <LottieAnimation
+                        animationData={conversationAnimationData}
+                        className="w-32 h-32"
+                      />
                     </div>
-                  ))}
-                </div>
-
-                {/* Details Button */}
-                {activeTabContent.details && (
-                  <div className="text-center">
-                    <button
-                      onClick={() => setShowDetails(showDetails === activeTab ? null : activeTab)}
-                      className="inline-flex items-center px-6 py-2 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors"
-                    >
-                      {showDetails === activeTab ? 'Hide' : 'View'} Technical Details
-                      <svg 
-                        className={`ml-2 w-4 h-4 transform transition-transform ${showDetails === activeTab ? 'rotate-180' : ''}`} 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                  </div>
-                )}
-
-                {/* Expanded Details */}
-                {showDetails === activeTab && activeTabContent.details && (
-                  <div className="mt-6 space-y-4">
-                    {activeTabContent.details.map((detail, index) => (
-                      <div key={index} className="bg-gray-50 rounded-lg p-5">
-                        <h4 className="font-semibold text-gray-900 mb-2">{detail.title}</h4>
-                        <p className="text-gray-600 text-sm leading-relaxed">{detail.description}</p>
+                    
+                    {/* Overview Text */}
+                    <div className="mb-8">
+                      <p className="text-gray-700 leading-relaxed text-center max-w-3xl mx-auto">
+                        {activeTabContent.overview}
+                      </p>
+                    </div>
+                    
+                    {/* Two Column Layout - Image and Key Points */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                      {/* Left Column - Placeholder Image */}
+                      <div className="flex justify-center">
+                        <div className="w-full max-w-md bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8 flex items-center justify-center">
+                          <svg className="w-full h-48 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={0.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                          </svg>
+                        </div>
                       </div>
-                    ))}
-                  </div>
+                      
+                      {/* Right Column - Key Points */}
+                      <div className="space-y-4">
+                        {activeTabContent.keyPoints.map((point, index) => (
+                          <div key={index} className="flex items-start">
+                            <svg className="w-5 h-5 text-blue-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                            <span className="text-gray-600 text-sm leading-relaxed">{point}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {/* Other tabs - keep original layout */}
+                    <div className="bg-blue-50 rounded-xl p-6 mb-6">
+                      <p className="text-gray-700 leading-relaxed">
+                        {activeTabContent.overview}
+                      </p>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                      {activeTabContent.keyPoints.map((point, index) => (
+                        <div key={index} className="flex items-start">
+                          <svg className="w-5 h-5 text-blue-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                          <span className="text-gray-700 text-sm">{point}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </>
                 )}
+
               </div>
             </div>
           )}
