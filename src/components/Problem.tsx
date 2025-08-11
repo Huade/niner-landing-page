@@ -226,7 +226,7 @@ const Problem: React.FC = () => {
     <section id="problem" className="niner-section bg-gradient-to-b from-white to-gray-50">
       <div className="niner-container">
         <div className="text-center mb-12">
-          <p className="text-sm uppercase tracking-[0.15em] font-semibold mb-4" style={{color: 'var(--niner-primary-600)'}}>Industry Analysis</p>
+          <p className="text-sm uppercase tracking-[0.15em] font-semibold mb-4" style={{color: 'var(--niner-primary-600)'}}>Problem</p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight" style={{color: 'var(--niner-secondary-900)'}}>
             The Statistical Crisis in Modern Polling
           </h2>

@@ -109,7 +109,7 @@ const Hero: React.FC = memo(() => {
           from the silent majority at a fraction of the cost.
         </p>
         
-        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div ref={ctaRef} className="flex justify-center">
           <button 
             className="niner-button niner-button-accent group shadow-lg"
             aria-label="See AI Polling in Action">
@@ -118,16 +118,6 @@ const Hero: React.FC = memo(() => {
               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
           </button>
-          <a 
-            href="#solution"
-            onClick={(e) => scrollToSection(e, 'solution')}
-            className="niner-button niner-button-outline group border-gray-400 hover:border-white text-gray-300 hover:text-white"
-            aria-label="Learn How It Works">
-            <span>Learn How It Works</span>
-            <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-          </a>
         </div>
         
         <div ref={badgesRef} className="mt-12 h-8 relative">

@@ -162,6 +162,7 @@ const Solution: React.FC = () => {
       <div className="niner-container">
         {/* Header */}
         <div className="text-center mb-12 animate-on-scroll">
+          <p className="text-sm uppercase tracking-[0.15em] font-semibold mb-4" style={{color: 'var(--niner-primary-600)'}}>Solution</p>
           <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{color: 'var(--niner-secondary-900)'}}>
             The Niner Breakthrough
           </h2>

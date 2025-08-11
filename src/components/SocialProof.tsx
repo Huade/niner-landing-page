@@ -73,13 +73,13 @@ const SocialProof: React.FC = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <p className="text-sm uppercase tracking-[0.15em] text-blue-600 font-semibold mb-3">
-            Featured In Global Media
+            Industry Recognition
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Dr. Michael Bailey's Expertise Featured In
+            Dr. Michael Bailey, CEO & Co-Founder
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Leading publications worldwide recognize Dr. Bailey's groundbreaking research on modern polling methodology
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Georgetown Walsh professor and polling methodology pioneer whose revolutionary approach to statistical sampling has garnered attention from the world's leading media outlets
           </p>
         </div>
         
@@ -149,35 +149,35 @@ const SocialProof: React.FC = () => {
         {/* Stats Section */}
         <div className="mt-16 bg-gradient-to-br from-gray-900 to-blue-900 rounded-2xl p-12 text-white">
           <div className="text-center mb-10">
-            <h3 className="text-3xl md:text-4xl font-bold mb-3">Proven Impact & Credibility</h3>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Dr. Bailey's groundbreaking research transforms how we understand modern polling
+            <h3 className="text-3xl md:text-4xl font-bold mb-3">Transforming Political Intelligence</h3>
+            <p className="text-gray-300 max-w-3xl mx-auto">
+              Backed by peer-reviewed research, Niner Research solves the 99% non-response crisis that renders traditional polling obsolete
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold mb-2">99%</div>
-              <div className="text-gray-400 text-sm">Non-response Rate</div>
-              <div className="text-gray-500 text-xs mt-1">Traditional Polls Miss</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">12+</div>
+              <div className="text-gray-400 text-sm">AI Services</div>
+              <div className="text-gray-500 text-xs mt-1">Intelligent Processing</div>
             </div>
             
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold mb-2">8+</div>
-              <div className="text-gray-400 text-sm">Global Media Features</div>
-              <div className="text-gray-500 text-xs mt-1">Worldwide Recognition</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">Real-time</div>
+              <div className="text-gray-400 text-sm">Adaptive Learning</div>
+              <div className="text-gray-500 text-xs mt-1">Dynamic Question Selection</div>
             </div>
             
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold mb-2">2025</div>
-              <div className="text-gray-400 text-sm">Latest Research</div>
-              <div className="text-gray-500 text-xs mt-1">Cambridge University Press</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">3-Layer</div>
+              <div className="text-gray-400 text-sm">Validation System</div>
+              <div className="text-gray-500 text-xs mt-1">Exit & Engagement Detection</div>
             </div>
             
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold mb-2">10x</div>
-              <div className="text-gray-400 text-sm">More Accurate</div>
-              <div className="text-gray-500 text-xs mt-1">Than Traditional Methods</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">Dynamic</div>
+              <div className="text-gray-400 text-sm">Follow-up Questions</div>
+              <div className="text-gray-500 text-xs mt-1">Clarification Engine</div>
             </div>
           </div>
         </div>
