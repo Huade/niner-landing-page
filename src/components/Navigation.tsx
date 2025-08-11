@@ -88,15 +88,6 @@ const Navigation: React.FC = () => {
               Solution
             </a>
             <a 
-              href="#research" 
-              onClick={(e) => scrollToSection(e, 'research')}
-              className={`font-medium transition-colors duration-200 hover:text-blue-600 ${
-                scrolled ? 'text-gray-700' : 'text-white'
-              }`}
-            >
-              Research
-            </a>
-            <a 
               href="#faq" 
               onClick={(e) => scrollToSection(e, 'faq')}
               className={`font-medium transition-colors duration-200 hover:text-blue-600 ${
@@ -154,13 +145,6 @@ const Navigation: React.FC = () => {
             className="block px-4 py-3 text-gray-700 font-medium hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1"
           >
             Solution
-          </a>
-          <a 
-            href="#research" 
-            onClick={(e) => scrollToSection(e, 'research')}
-            className="block px-4 py-3 text-gray-700 font-medium hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1"
-          >
-            Research
           </a>
           <a 
             href="#faq" 

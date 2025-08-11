@@ -91,18 +91,19 @@ const Hero: React.FC = memo(() => {
 
   return (
     <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent"></div>
       
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 niner-container text-center">
         <h1 ref={titleRef} className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
           When 99% Won't Answer,<br />
-          <span className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
+          <span className="niner-text-gradient-accent inline-block">
             How Can Polls Be Right?
           </span>
         </h1>
         
-        <p ref={subtitleRef} className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
+        <p ref={subtitleRef} className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed" style={{fontSize: 'var(--niner-text-lg)', lineHeight: '1.75'}}>
           They can't—until now. NINER Research pioneers the modern polling paradigm with AI-powered 
           conversations that capture non-ignorable non-respondents (NINRs)—delivering accurate insights 
           from the silent majority at a fraction of the cost.
@@ -110,7 +111,7 @@ const Hero: React.FC = memo(() => {
         
         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center">
           <button 
-            className="group px-8 py-4 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
+            className="niner-button niner-button-accent group shadow-lg"
             aria-label="See AI Polling in Action">
             <span>See AI Polling in Action</span>
             <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
@@ -118,24 +119,28 @@ const Hero: React.FC = memo(() => {
             </svg>
           </button>
           <a 
-            href="#research"
-            onClick={(e) => scrollToSection(e, 'research')}
-            className="group px-8 py-4 bg-transparent border-2 border-gray-400 hover:border-white text-gray-300 hover:text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
-            aria-label="Read the Research">
-            <span>Read the Research</span>
+            href="#solution"
+            onClick={(e) => scrollToSection(e, 'solution')}
+            className="niner-button niner-button-outline group border-gray-400 hover:border-white text-gray-300 hover:text-white"
+            aria-label="Learn How It Works">
+            <span>Learn How It Works</span>
             <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
           </a>
         </div>
         
-        <div ref={badgesRef} className="mt-8 h-6 relative">
+        <div ref={badgesRef} className="mt-12 h-8 relative">
           {badges.map((badge, index) => (
             <div 
               key={index} 
-              className={`absolute inset-0 text-sm text-gray-400 h-6 flex items-center justify-center transition-opacity duration-700 ${
-                currentBadgeIndex === index ? 'opacity-100' : 'opacity-0'
+              className={`absolute inset-0 text-sm text-gray-400 h-8 flex items-center justify-center transition-all duration-700 ${
+                currentBadgeIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
               }`}
+              style={{
+                fontSize: 'var(--niner-text-sm)',
+                letterSpacing: '0.025em'
+              }}
             >
               {badge}
             </div>

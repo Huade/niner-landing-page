@@ -4,8 +4,8 @@ import Hero from './components/Hero';
 import SocialProof from './components/SocialProof';
 import Problem from './components/Problem';
 import Solution from './components/Solution';
+import Insights from './components/Insights';
 
-const Research = lazy(() => import('./components/Research'));
 const FAQ = lazy(() => import('./components/FAQ'));
 const Footer = lazy(() => import('./components/Footer'));
 
@@ -23,9 +23,7 @@ function App() {
       <SocialProof />
       <Problem />
       <Solution />
-      <Suspense fallback={<LoadingSpinner />}>
-        <Research />
-      </Suspense>
+      <Insights />
       <Suspense fallback={<LoadingSpinner />}>
         <FAQ />
       </Suspense>

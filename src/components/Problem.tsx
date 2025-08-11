@@ -40,12 +40,12 @@ const Problem: React.FC = () => {
     <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto max-w-lg mx-auto">
       <defs>
         <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#34699A" stopOpacity="0.1"/>
-          <stop offset="100%" stopColor="#34699A" stopOpacity="0.02"/>
+          <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.1"/>
+          <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.02"/>
         </linearGradient>
         <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#113F67"/>
-          <stop offset="100%" stopColor="#34699A"/>
+          <stop offset="0%" stopColor="#1e3a8a"/>
+          <stop offset="100%" stopColor="#3b82f6"/>
         </linearGradient>
       </defs>
       <g className="chart-grid">
@@ -73,7 +73,7 @@ const Problem: React.FC = () => {
       <path d="M 70,56 L 130,100 L 190,130 L 250,160 L 310,176" 
             fill="none" stroke="url(#lineGradient)" strokeWidth="3"/>
       <path d="M 310,176 L 370,190" 
-            fill="none" stroke="#34699A" strokeWidth="3" strokeDasharray="6,6"/>
+            fill="none" stroke="#3b82f6" strokeWidth="3" strokeDasharray="6,6"/>
       <text x="20" y="25" fontSize="12" fill="#666">
         Response rate
       </text>
@@ -107,11 +107,11 @@ const Problem: React.FC = () => {
         <text x="375" y="30" textAnchor="middle" fontSize="16" fontWeight="600" fill="#6b7280">
           Reality
         </text>
-        <line x1="280" y1="80" x2="470" y2="80" stroke="#34699A" strokeWidth="4"/>
-        <line x1="280" y1="74" x2="280" y2="86" stroke="#34699A" strokeWidth="4"/>
-        <line x1="470" y1="74" x2="470" y2="86" stroke="#34699A" strokeWidth="4"/>
-        <circle cx="375" cy="80" r="7" fill="#34699A"/>
-        <text x="375" y="105" textAnchor="middle" fontSize="12" fill="#34699A">
+        <line x1="280" y1="80" x2="470" y2="80" stroke="#3b82f6" strokeWidth="4"/>
+        <line x1="280" y1="74" x2="280" y2="86" stroke="#3b82f6" strokeWidth="4"/>
+        <line x1="470" y1="74" x2="470" y2="86" stroke="#3b82f6" strokeWidth="4"/>
+        <circle cx="375" cy="80" r="7" fill="#3b82f6"/>
+        <text x="375" y="105" textAnchor="middle" fontSize="12" fill="#3b82f6">
           Everyone
         </text>
       </g>
@@ -125,8 +125,8 @@ const Problem: React.FC = () => {
           <stop offset="100%" stopColor="#ef4444" stopOpacity="0.05"/>
         </linearGradient>
         <linearGradient id="qualityGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#34699A" stopOpacity="0.2"/>
-          <stop offset="100%" stopColor="#34699A" stopOpacity="0.05"/>
+          <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.2"/>
+          <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.05"/>
         </linearGradient>
       </defs>
       <g className="chart-grid">
@@ -162,11 +162,11 @@ const Problem: React.FC = () => {
               stroke="#ef4444" strokeWidth="2" strokeDasharray="3,3" fill="none"/>
       </g>
       <g id="thoughtful-pattern" opacity="0.4">
-        <circle cx="100" cy="56" r="4" fill="#34699A"/>
-        <circle cx="250" cy="88" r="4" fill="#34699A"/>
-        <circle cx="175" cy="120" r="4" fill="#34699A"/>
-        <circle cx="325" cy="152" r="4" fill="#34699A"/>
-        <circle cx="250" cy="184" r="4" fill="#34699A"/>
+        <circle cx="100" cy="56" r="4" fill="#3b82f6"/>
+        <circle cx="250" cy="88" r="4" fill="#3b82f6"/>
+        <circle cx="175" cy="120" r="4" fill="#3b82f6"/>
+        <circle cx="325" cy="152" r="4" fill="#3b82f6"/>
+        <circle cx="250" cy="184" r="4" fill="#3b82f6"/>
       </g>
     </svg>,
     
@@ -178,8 +178,8 @@ const Problem: React.FC = () => {
           <stop offset="100%" stopColor="#ef4444" stopOpacity="0.2"/>
         </linearGradient>
         <linearGradient id="costGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#34699A" stopOpacity="0.8"/>
-          <stop offset="100%" stopColor="#34699A" stopOpacity="0.2"/>
+          <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.8"/>
+          <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.2"/>
         </linearGradient>
       </defs>
       <line x1="50" y1="200" x2="50" y2="40" stroke="#666" strokeWidth="2"/>
@@ -200,7 +200,7 @@ const Problem: React.FC = () => {
         </text>
       </g>
       <g transform="translate(120, 170)">
-        <text x="0" y="0" fontSize="14" fill="#34699A" textAnchor="middle" fontWeight="700">
+        <text x="0" y="0" fontSize="14" fill="#3b82f6" textAnchor="middle" fontWeight="700">
           Non-probability
         </text>
       </g>
@@ -223,32 +223,36 @@ const Problem: React.FC = () => {
   };
 
   return (
-    <section id="problem" className="min-h-screen flex flex-col bg-gradient-to-b from-slate-50 via-white to-gray-50 overflow-hidden">
-      <div className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col">
+    <section id="problem" className="niner-section bg-gradient-to-b from-white to-gray-50">
+      <div className="niner-container">
         <div className="text-center mb-12">
-          <p className="text-sm uppercase tracking-wider text-blue-600 font-semibold mb-3">Industry Analysis</p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+          <p className="text-sm uppercase tracking-[0.15em] font-semibold mb-4" style={{color: 'var(--niner-primary-600)'}}>Industry Analysis</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight" style={{color: 'var(--niner-secondary-900)'}}>
             The Statistical Crisis in Modern Polling
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl max-w-3xl mx-auto" style={{color: 'var(--niner-secondary-500)'}}>
             Empirical evidence of systemic methodology failure
           </p>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex justify-center items-center gap-4 mb-8">
-          <div className="inline-flex bg-white border border-gray-200 rounded-lg shadow-sm p-1">
+        <div className="flex justify-center items-center gap-4 mb-10 overflow-x-auto scrollbar-hide">
+          <div className="inline-flex bg-gray-50 border border-gray-200 rounded-xl p-1 min-w-fit">
             {problems.map((problem, index) => (
               <button
                 key={problem.id}
                 onClick={() => handleTabClick(index)}
                 className={`
-                  relative px-4 py-2.5 rounded-md transition-all duration-300 font-medium text-sm
+                  relative px-4 py-2.5 rounded-lg transition-all duration-300 font-medium text-sm min-h-[44px] flex items-center
                   ${activeTab === index 
-                    ? 'bg-gradient-to-r from-blue-900 to-blue-800 text-white shadow-sm' 
-                    : 'text-gray-600 hover:text-blue-900 hover:bg-gray-50'
+                    ? 'bg-white shadow-md' 
+                    : 'hover:bg-white/50'
                   }
                 `}
+                style={{
+                  color: activeTab === index ? 'var(--niner-primary-600)' : 'var(--niner-secondary-500)',
+                  transitionTimingFunction: 'var(--niner-easing-ease)'
+                }}
                 aria-label={`View ${problem.title}`}
               >
                 <span className="hidden lg:inline">{problem.title}</span>
@@ -261,7 +265,11 @@ const Problem: React.FC = () => {
         {/* Card Content */}
         <div 
           ref={containerRef}
-          className="flex-1 bg-white rounded-xl border border-gray-100 shadow-lg p-6 lg:p-10 hover:shadow-xl transition-all duration-300 flex flex-col"
+          className="niner-card bg-white rounded-2xl border border-gray-200 p-8 lg:p-12"
+          style={{
+            boxShadow: 'var(--niner-shadow-lg)',
+            borderRadius: 'var(--niner-radius-2xl)'
+          }}
         >
           <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
             <div className="order-2 lg:order-1 flex items-center justify-center p-4">
@@ -269,49 +277,44 @@ const Problem: React.FC = () => {
             </div>
             <div className="order-1 lg:order-2 flex flex-col justify-center p-4">
               <div className="mb-4">
-                <p className="text-sm uppercase tracking-wider text-gray-500 mb-2">{problems[activeTab].subtitle}</p>
-                <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                <p className="text-sm uppercase tracking-[0.1em] font-semibold mb-3" style={{color: 'var(--niner-primary-600)', fontSize: 'var(--niner-text-sm)'}}>{problems[activeTab].subtitle}</p>
+                <h3 className="text-2xl lg:text-3xl font-bold mb-4" style={{color: 'var(--niner-secondary-900)'}}>
                   {problems[activeTab].title}
                 </h3>
               </div>
               <div className="mb-6">
-                <p className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent">
+                <p className="text-4xl lg:text-5xl font-bold niner-text-gradient">
                   {problems[activeTab].highlight}
                 </p>
               </div>
-              <p className="text-lg lg:text-xl text-gray-700 leading-relaxed">
+              <p className="text-base lg:text-lg leading-relaxed" style={{color: 'var(--niner-secondary-500)', fontSize: 'var(--niner-text-lg)'}}>
                 {problems[activeTab].description}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Call to Action - Arrow to Solutions */}
-        <div className="mt-10 text-center">
+        {/* Call to Action */}
+        <div className="mt-12 text-center">
           <button
             onClick={scrollToSolution}
-            className="group inline-flex flex-col items-center gap-3 transition-all duration-300 hover:transform hover:translate-y-1"
+            className="niner-button niner-button-primary group"
             aria-label="Discover Niner's methodology"
           >
-            <span className="text-sm uppercase tracking-wider text-gray-500 font-semibold">Our Solution</span>
-            <span className="text-lg font-bold text-gray-900 group-hover:text-blue-900 transition-colors">Discover Niner's Revolutionary Methodology</span>
-            <div className="relative">
-              <svg 
-                className="w-10 h-10 text-blue-900 animate-bounce" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3" 
-                />
-              </svg>
-              <div className="absolute inset-0 w-10 h-10 bg-blue-900 opacity-20 rounded-full blur-xl animate-pulse"></div>
-            </div>
+            <span>Discover Our Solution</span>
+            <svg 
+              className="w-5 h-5 transition-transform group-hover:translate-x-1" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M17 8l4 4m0 0l-4 4m4-4H3" 
+              />
+            </svg>
           </button>
         </div>
       </div>

@@ -146,33 +146,39 @@ const SocialProof: React.FC = () => {
           </div>
         </div>
 
-        {/* Trust indicators */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center group">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-yellow-50 border border-yellow-200 mb-4 transition-colors duration-200 group-hover:bg-yellow-100">
-              <span className="text-3xl font-bold bg-gradient-to-br from-yellow-400 to-yellow-600 bg-clip-text text-transparent">8+</span>
-            </div>
-            <div className="text-base font-semibold text-gray-700">Global Media Features</div>
-            <div className="text-sm text-gray-500 mt-1">Worldwide Recognition</div>
+        {/* Stats Section */}
+        <div className="mt-16 bg-gradient-to-br from-gray-900 to-blue-900 rounded-2xl p-12 text-white">
+          <div className="text-center mb-10">
+            <h3 className="text-3xl md:text-4xl font-bold mb-3">Proven Impact & Credibility</h3>
+            <p className="text-gray-300 max-w-2xl mx-auto">
+              Dr. Bailey's groundbreaking research transforms how we understand modern polling
+            </p>
           </div>
-          <div className="text-center group">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-50 border border-blue-200 mb-4 transition-colors duration-200 group-hover:bg-blue-100">
-              <svg className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-              </svg>
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold mb-2">99%</div>
+              <div className="text-gray-400 text-sm">Non-response Rate</div>
+              <div className="text-gray-500 text-xs mt-1">Traditional Polls Miss</div>
             </div>
-            <div className="text-base font-semibold text-gray-700">Georgetown University</div>
-            <div className="text-sm text-gray-500 mt-1">Walsh Professor</div>
-          </div>
-          <div className="text-center group">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-purple-50 border border-purple-200 mb-4 transition-colors duration-200 group-hover:bg-purple-100">
-              <svg className="w-10 h-10 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
+            
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold mb-2">8+</div>
+              <div className="text-gray-400 text-sm">Global Media Features</div>
+              <div className="text-gray-500 text-xs mt-1">Worldwide Recognition</div>
             </div>
-            <div className="text-base font-semibold text-gray-700">2025 Research</div>
-            <div className="text-sm text-gray-500 mt-1">Latest Published Studies</div>
+            
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold mb-2">2025</div>
+              <div className="text-gray-400 text-sm">Latest Research</div>
+              <div className="text-gray-500 text-xs mt-1">Cambridge University Press</div>
+            </div>
+            
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold mb-2">10x</div>
+              <div className="text-gray-400 text-sm">More Accurate</div>
+              <div className="text-gray-500 text-xs mt-1">Than Traditional Methods</div>
+            </div>
           </div>
         </div>
       </div>

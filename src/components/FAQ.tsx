@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 
 interface FAQItem {
   question: string;
@@ -6,6 +6,8 @@ interface FAQItem {
 }
 
 const FAQ: React.FC = memo(() => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  
   const faqs: FAQItem[] = [
     {
       question: "Why are traditional polls failing?",
@@ -41,17 +43,58 @@ const FAQ: React.FC = memo(() => {
     }
   ];
 
+  const toggleAccordion = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
-    <section className="py-16 bg-gray-50" id="faq">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-3">Frequently Asked Questions</h2>
-        <p className="text-base text-gray-600 text-center mb-10">Understanding the future of survey research</p>
+    <section className="niner-section" id="faq" style={{backgroundColor: 'var(--niner-secondary-50)'}}>
+      <div className="niner-container">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3" style={{color: 'var(--niner-secondary-900)'}}>Frequently Asked Questions</h2>
+        <p className="text-base text-center mb-10" style={{color: 'var(--niner-secondary-600)'}}>Understanding the future of survey research</p>
         
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+        <div className="max-w-3xl mx-auto space-y-3">
           {faqs.map((faq, index) => (
-            <div key={index} className="py-4">
-              <h3 className="text-base font-semibold text-gray-900 mb-2">{faq.question}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">{faq.answer}</p>
+            <div 
+              key={index} 
+              className="bg-white rounded-lg overflow-hidden transition-all duration-300" 
+              style={{
+                borderRadius: 'var(--niner-radius-lg)',
+                boxShadow: openIndex === index ? 'var(--niner-shadow-md)' : 'var(--niner-shadow-sm)'
+              }}
+            >
+              <button
+                onClick={() => toggleAccordion(index)}
+                className="w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                style={{minHeight: '44px'}}
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-answer-${index}`}
+              >
+                <h3 className="text-base font-semibold pr-4" style={{color: 'var(--niner-secondary-900)'}}>
+                  {faq.question}
+                </h3>
+                <svg 
+                  className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}
+                  style={{color: 'var(--niner-primary-600)'}}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div 
+                id={`faq-answer-${index}`}
+                className={`transition-all duration-300 ease-in-out ${
+                  openIndex === index ? 'max-h-96' : 'max-h-0'
+                } overflow-hidden`}
+              >
+                <div className="px-6 pb-4">
+                  <p className="text-sm leading-relaxed" style={{color: 'var(--niner-secondary-600)', fontSize: 'var(--niner-text-sm)'}}>
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

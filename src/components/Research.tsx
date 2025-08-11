@@ -174,14 +174,14 @@ const Results: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="research" className="py-16 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={sectionRef} id="research" className="niner-section bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
+      <div className="niner-container">
         {/* Compact Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{color: 'var(--niner-secondary-900)'}}>
             The Science Behind Niner
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg max-w-3xl mx-auto" style={{color: 'var(--niner-secondary-500)', fontSize: 'var(--niner-text-lg)'}}>
             Our revolutionary approach is backed by breakthrough research from Harvard, Georgetown, and leading institutions worldwide
           </p>
         </div>
@@ -191,7 +191,8 @@ const Results: React.FC = () => {
           {/* Left Timeline for Desktop */}
           <div 
             ref={timelineRef}
-            className="hidden lg:block absolute left-20 top-0 w-0.5 bg-gradient-to-b from-blue-600 to-purple-600 h-full origin-top"
+            className="hidden lg:block absolute left-20 top-0 w-0.5 h-full origin-top"
+            style={{background: 'linear-gradient(to bottom, var(--niner-primary-600), var(--niner-primary-500))'}}
           ></div>
 
           {/* Research Timeline Grid */}
@@ -203,7 +204,7 @@ const Results: React.FC = () => {
                   ref={el => { if (el) yearBadgesRef.current[index] = el; }}
                   className="lg:absolute lg:left-12 lg:top-6 mb-4 lg:mb-0"
                 >
-                  <div className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full w-14 h-14 font-bold text-base shadow-lg">
+                  <div className="inline-flex items-center justify-center text-white rounded-full w-14 h-14 font-bold text-base" style={{background: 'linear-gradient(135deg, var(--niner-primary-600), var(--niner-primary-500))', boxShadow: 'var(--niner-shadow-lg)'}}>
                     {research.year}
                   </div>
                 </div>
@@ -213,7 +214,7 @@ const Results: React.FC = () => {
                   ref={el => { if (el) cardsRef.current[index] = el; }}
                   className="w-full"
                 >
-                    <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+                    <div className="niner-card bg-white overflow-hidden border border-gray-100" style={{borderRadius: 'var(--niner-radius-xl)'}}>
                       {/* Compact Header */}
                       <div className={`p-4 lg:p-6 ${
                         index === 0 ? 'bg-gradient-to-r from-purple-50 to-pink-50' :
@@ -221,12 +222,12 @@ const Results: React.FC = () => {
                         index === 2 ? 'bg-gradient-to-r from-teal-50 to-blue-50' :
                         'bg-gradient-to-r from-green-50 to-teal-50'
                       }`}>
-                        <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2">
+                        <h3 className="text-lg lg:text-xl font-bold mb-2" style={{color: 'var(--niner-secondary-900)'}}>
                           {research.title}
                         </h3>
-                        <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
+                        <div className="flex flex-wrap items-center gap-2 text-sm" style={{color: 'var(--niner-secondary-600)'}}>
                           <span className="font-semibold">{research.authors}</span>
-                          <span className="text-gray-400">•</span>
+                          <span style={{color: 'var(--niner-secondary-500)'}}>•</span>
                           <span>{research.publication}</span>
                         </div>
                       </div>
@@ -237,15 +238,15 @@ const Results: React.FC = () => {
                         <div className="lg:grid lg:grid-cols-2 lg:gap-6">
                           {/* Left Column - Summary */}
                           <div>
-                            <p className="text-sm lg:text-base text-gray-700 leading-relaxed mb-4 lg:mb-0">
+                            <p className="text-sm lg:text-base leading-relaxed mb-4 lg:mb-0" style={{color: 'var(--niner-secondary-700)'}}>
                               {research.summary}
                             </p>
                           </div>
 
                           {/* Right Column - Key Findings */}
                           <div>
-                            <h4 className="text-sm lg:text-base font-bold text-gray-900 mb-3 flex items-center">
-                              <svg className="w-4 h-4 text-blue-600 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <h4 className="text-sm lg:text-base font-bold mb-3 flex items-center" style={{color: 'var(--niner-secondary-900)'}}>
+                              <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{color: 'var(--niner-primary-600)'}}>
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
                               Key Findings
@@ -256,7 +257,7 @@ const Results: React.FC = () => {
                                   <svg className="w-3.5 h-3.5 text-green-600 mr-1.5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                   </svg>
-                                  <p className="text-sm text-gray-700 leading-snug">{insight}</p>
+                                  <p className="text-sm leading-snug" style={{color: 'var(--niner-secondary-700)'}}>{insight}</p>
                                 </li>
                               ))}
                             </ul>
@@ -267,8 +268,8 @@ const Results: React.FC = () => {
                         <div className="mt-4 pt-4 border-t border-gray-100">
                           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
                             <div className="bg-gray-50 rounded-lg px-3 py-2 flex-1">
-                              <p className="text-xs text-gray-600 line-clamp-2">
-                                <span className="font-semibold text-gray-900">Citation:</span> {research.citation}
+                              <p className="text-xs line-clamp-2" style={{color: 'var(--niner-secondary-600)'}}>
+                                <span className="font-semibold" style={{color: 'var(--niner-secondary-900)'}}>Citation:</span> {research.citation}
                               </p>
                             </div>
                             {research.doi && (
@@ -276,7 +277,7 @@ const Results: React.FC = () => {
                                 href={`https://doi.org/${research.doi}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs rounded-lg transition-all duration-300 whitespace-nowrap"
+                                className="niner-button niner-button-primary text-xs whitespace-nowrap"
                               >
                                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -296,7 +297,7 @@ const Results: React.FC = () => {
 
         {/* Compact CTA */}
         <div className="mt-16">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 p-8 lg:p-12 text-center shadow-xl">
+          <div className="relative overflow-hidden p-8 lg:p-12 text-center" style={{borderRadius: 'var(--niner-radius-2xl)', background: 'linear-gradient(135deg, var(--niner-primary-600), var(--niner-primary-500))', boxShadow: 'var(--niner-shadow-xl)'}}>
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0" style={{
@@ -309,11 +310,11 @@ const Results: React.FC = () => {
               <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
                 Ready to leverage cutting-edge science for your polling needs?
               </h3>
-              <p className="text-lg text-blue-100 mb-6 max-w-2xl mx-auto">
+              <p className="text-lg text-blue-50 mb-6 max-w-2xl mx-auto" style={{fontSize: 'var(--niner-text-lg)'}}>
                 Niner combines these breakthrough insights with AI technology to deliver 
                 the most accurate polling results available today.
               </p>
-              <button className="px-8 py-4 bg-white hover:bg-gray-100 text-blue-600 font-bold text-base rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+              <button className="niner-button px-8 py-4 bg-white hover:bg-gray-50 font-bold text-base transform hover:-translate-y-0.5" style={{color: 'var(--niner-primary-600)', boxShadow: 'var(--niner-shadow-lg)'}}>
                 See Niner in Action
               </button>
             </div>
