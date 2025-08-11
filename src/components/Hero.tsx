@@ -10,7 +10,7 @@ const Hero: React.FC = memo(() => {
   const badgesRef = useRef<HTMLDivElement>(null);
   const { currentIndex: currentBadgeIndex, badges } = useRotatingBadges({
     badges: [
-      "Co-founded by Dr. Michael Bailey • Walsh Professor at Georgetown",
+      "Founded by Dr. Michael Bailey • Walsh Professor at Georgetown",
       "Georgetown University • McCourt School of Public Policy",
       "Published in Political Analysis 2025 • Cambridge University Press",
       "AI-Powered • Scientifically Validated",
@@ -103,9 +103,9 @@ const Hero: React.FC = memo(() => {
         </h1>
         
         <p ref={subtitleRef} className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-          Co-founded by Dr. Michael Bailey, Georgetown's Walsh Professor of Government and Public Policy, 
-          Niner Research revolutionizes polling with AI-powered conversations that reach the silent majority 
-          traditional polls miss—at a fraction of the cost.
+          They can't—until now. NINER Research pioneers the modern polling paradigm with AI-powered 
+          conversations that capture non-ignorable non-respondents (NINRs)—delivering accurate insights 
+          from the silent majority at a fraction of the cost.
         </p>
         
         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center">

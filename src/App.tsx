@@ -1,11 +1,11 @@
 import { lazy, Suspense } from 'react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
+import SocialProof from './components/SocialProof';
 import Problem from './components/Problem';
 import Solution from './components/Solution';
 
 const Research = lazy(() => import('./components/Research'));
-const Industries = lazy(() => import('./components/Industries'));
 const FAQ = lazy(() => import('./components/FAQ'));
 const Footer = lazy(() => import('./components/Footer'));
 
@@ -20,13 +20,11 @@ function App() {
     <div className="min-h-screen">
       <Navigation />
       <Hero />
+      <SocialProof />
       <Problem />
       <Solution />
       <Suspense fallback={<LoadingSpinner />}>
         <Research />
-      </Suspense>
-      <Suspense fallback={<LoadingSpinner />}>
-        <Industries />
       </Suspense>
       <Suspense fallback={<LoadingSpinner />}>
         <FAQ />
