@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback, memo } from 'react';
+import React, { useEffect, useRef, useCallback, memo, useState } from 'react';
 import gsap from 'gsap';
 import { useRotatingBadges } from '@/hooks/useRotatingBadges';
 
@@ -8,9 +8,10 @@ const Hero: React.FC = memo(() => {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const badgesRef = useRef<HTMLDivElement>(null);
+  const [email, setEmail] = useState('');
   const { currentIndex: currentBadgeIndex, badges } = useRotatingBadges({
     badges: [
-      "Founded by Dr. Michael Bailey • Walsh Professor at Georgetown",
+      "Co-founded by Dr. Michael Bailey, CEO • Walsh Professor at Georgetown",
       "Georgetown University • McCourt School of Public Policy",
       "Published in Political Analysis 2025 • Cambridge University Press",
       "AI-Powered • Scientifically Validated",
@@ -27,17 +28,13 @@ const Hero: React.FC = memo(() => {
     });
   }, []);
 
-  const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offsetTop = element.offsetTop - 80; // Offset for fixed navigation
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
+    if (email && email.includes('@')) {
+      console.log('Email submitted:', email);
+      // Handle email submission here
     }
-  }, []);
+  }, [email]);
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -110,14 +107,23 @@ const Hero: React.FC = memo(() => {
         </p>
         
         <div ref={ctaRef} className="flex justify-center">
-          <button 
-            className="niner-button niner-button-accent group shadow-lg"
-            aria-label="See AI Polling in Action">
-            <span>See AI Polling in Action</span>
-            <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-          </button>
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
+            <input
+              type="email"
+              placeholder="Enter your business email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="flex-1 px-4 py-3 text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
+              required
+              aria-label="Business email"
+            />
+            <button 
+              type="submit"
+              className="niner-button niner-button-accent shadow-lg whitespace-nowrap"
+              aria-label="See AI Polling in Action">
+              See AI Polling in Action
+            </button>
+          </form>
         </div>
         
         <div ref={badgesRef} className="mt-12 h-8 relative">
