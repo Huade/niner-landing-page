@@ -46,12 +46,12 @@ const Navigation: React.FC = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
       scrolled 
-        ? 'bg-white/90 backdrop-blur-xl shadow-lg border-b border-gray-100' 
+        ? 'bg-white border-b border-gray-200' 
         : 'bg-transparent'
     }`}>
       {/* Scroll Progress Bar */}
       <div 
-        className="absolute top-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-150"
+        className="absolute top-0 left-0 h-0.5 bg-blue-600 transition-all duration-150"
         style={{ width: `${scrollProgress}%` }}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -99,7 +99,7 @@ const Navigation: React.FC = () => {
             <a 
               href="#contact" 
               onClick={(e) => scrollToSection(e, 'contact')}
-              className="ml-4 px-6 py-2.5 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-semibold rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
+              className="ml-4 niner-button-compact niner-button-primary-flat"
             >
               Request a Demo
             </a>
@@ -131,7 +131,7 @@ const Navigation: React.FC = () => {
       <div className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden ${
         mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
       }`}>
-        <div className="px-4 py-6 space-y-2 bg-white/95 backdrop-blur-xl shadow-2xl border-t border-gray-100">
+        <div className="px-4 py-6 space-y-2 bg-white border-t border-gray-200">
           <a 
             href="#problem" 
             onClick={(e) => scrollToSection(e, 'problem')}
@@ -155,7 +155,7 @@ const Navigation: React.FC = () => {
           </a>
           <a 
             href="#contact" 
-            className="block w-full px-6 py-2.5 mt-4 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-semibold rounded-lg text-center transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center"
+            className="block w-full mt-4 niner-button-flat niner-button-primary-flat text-center flex items-center justify-center"
             onClick={(e) => scrollToSection(e, 'contact')}
           >
             Request a Demo

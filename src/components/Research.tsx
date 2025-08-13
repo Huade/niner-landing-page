@@ -174,7 +174,7 @@ const Results: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="research" className="niner-section bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
+    <section ref={sectionRef} id="research" className="niner-section bg-gray-50 overflow-hidden">
       <div className="niner-container">
         {/* Compact Header */}
         <div className="text-center mb-12">
@@ -192,7 +192,7 @@ const Results: React.FC = () => {
           <div 
             ref={timelineRef}
             className="hidden lg:block absolute left-20 top-0 w-0.5 h-full origin-top"
-            style={{background: 'linear-gradient(to bottom, var(--niner-primary-600), var(--niner-primary-500))'}}
+            className="bg-blue-600"
           ></div>
 
           {/* Research Timeline Grid */}
@@ -204,7 +204,7 @@ const Results: React.FC = () => {
                   ref={el => { if (el) yearBadgesRef.current[index] = el; }}
                   className="lg:absolute lg:left-12 lg:top-6 mb-4 lg:mb-0"
                 >
-                  <div className="inline-flex items-center justify-center text-white rounded-full w-14 h-14 font-bold text-base" style={{background: 'linear-gradient(135deg, var(--niner-primary-600), var(--niner-primary-500))', boxShadow: 'var(--niner-shadow-lg)'}}>
+                  <div className="inline-flex items-center justify-center text-white rounded-full w-14 h-14 font-bold text-base bg-blue-600">
                     {research.year}
                   </div>
                 </div>
@@ -214,13 +214,13 @@ const Results: React.FC = () => {
                   ref={el => { if (el) cardsRef.current[index] = el; }}
                   className="w-full"
                 >
-                    <div className="niner-card bg-white overflow-hidden border border-gray-100" style={{borderRadius: 'var(--niner-radius-xl)'}}>
+                    <div className="bg-white rounded-lg overflow-hidden border border-gray-200 transition-all duration-200 hover:border-gray-300">
                       {/* Compact Header */}
                       <div className={`p-4 lg:p-6 ${
-                        index === 0 ? 'bg-gradient-to-r from-purple-50 to-pink-50' :
-                        index === 1 ? 'bg-gradient-to-r from-blue-50 to-indigo-50' :
-                        index === 2 ? 'bg-gradient-to-r from-teal-50 to-blue-50' :
-                        'bg-gradient-to-r from-green-50 to-teal-50'
+                        index === 0 ? 'bg-purple-50' :
+                        index === 1 ? 'bg-blue-50' :
+                        index === 2 ? 'bg-teal-50' :
+                        'bg-green-50'
                       }`}>
                         <h3 className="text-lg lg:text-xl font-bold mb-2" style={{color: 'var(--niner-secondary-900)'}}>
                           {research.title}
@@ -297,7 +297,7 @@ const Results: React.FC = () => {
 
         {/* Compact CTA */}
         <div className="mt-16">
-          <div className="relative overflow-hidden p-8 lg:p-12 text-center" style={{borderRadius: 'var(--niner-radius-2xl)', background: 'linear-gradient(135deg, var(--niner-primary-600), var(--niner-primary-500))', boxShadow: 'var(--niner-shadow-xl)'}}>
+          <div className="relative overflow-hidden p-8 lg:p-12 text-center bg-blue-600 rounded-lg border border-blue-700">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0" style={{
@@ -314,7 +314,7 @@ const Results: React.FC = () => {
                 Niner combines these breakthrough insights with AI technology to deliver 
                 the most accurate polling results available today.
               </p>
-              <button className="niner-button px-8 py-4 bg-white hover:bg-gray-50 font-bold text-base transform hover:-translate-y-0.5" style={{color: 'var(--niner-primary-600)', boxShadow: 'var(--niner-shadow-lg)'}}>
+              <button className="niner-button-flat niner-button-primary-flat">
                 See Niner in Action
               </button>
             </div>

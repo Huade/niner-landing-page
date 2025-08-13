@@ -223,7 +223,7 @@ const Problem: React.FC = () => {
   };
 
   return (
-    <section id="problem" className="niner-section bg-gradient-to-b from-white to-gray-50">
+    <section id="problem" className="niner-section bg-white">
       <div className="niner-container">
         <div className="text-center mb-12">
           <p className="text-sm uppercase tracking-[0.15em] font-semibold mb-4" style={{color: 'var(--niner-primary-600)'}}>Problem</p>
@@ -245,7 +245,7 @@ const Problem: React.FC = () => {
                 className={`
                   relative px-4 py-2.5 rounded-lg transition-all duration-300 font-medium text-sm min-h-[44px] flex items-center
                   ${activeTab === index 
-                    ? 'bg-white shadow-md' 
+                    ? 'bg-white border border-gray-300' 
                     : 'hover:bg-white/50'
                   }
                 `}
@@ -265,11 +265,7 @@ const Problem: React.FC = () => {
         {/* Card Content */}
         <div 
           ref={containerRef}
-          className="niner-card bg-white rounded-2xl border border-gray-200 p-8 lg:p-12"
-          style={{
-            boxShadow: 'var(--niner-shadow-lg)',
-            borderRadius: 'var(--niner-radius-2xl)'
-          }}
+          className="bg-white rounded-lg border border-gray-200 p-8 lg:p-12 transition-all duration-200 hover:bg-gray-50 hover:border-gray-300"
         >
           <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
             <div className="order-2 lg:order-1 flex items-center justify-center p-4">
@@ -298,7 +294,7 @@ const Problem: React.FC = () => {
         <div className="mt-12 text-center">
           <button
             onClick={scrollToSolution}
-            className="niner-button niner-button-primary group"
+            className="niner-button-flat niner-button-primary-flat inline-flex items-center gap-2"
             aria-label="Discover Niner's methodology"
           >
             <span>Discover Our Solution</span>

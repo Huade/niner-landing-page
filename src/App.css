@@ -176,18 +176,74 @@
   }
 }
 
-/* Card Styles */
+/* Card Styles - Flat Design */
 .niner-card {
-  background: white;
-  border-radius: var(--niner-radius-xl);
+  background: var(--niner-surface-white, #ffffff);
+  border-radius: 0.5rem;
   padding: var(--niner-space-6);
-  box-shadow: var(--niner-shadow-md);
-  transition: all 0.3s var(--niner-easing-ease);
+  border: 1px solid var(--niner-border-light, #e2e8f0);
+  transition: all 0.2s var(--niner-easing-ease);
 }
 
 .niner-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--niner-shadow-xl);
+  background: var(--niner-surface-light, #f8fafc);
+  border-color: var(--niner-border-medium, #cbd5e1);
+}
+
+/* Flat Button Styles */
+.niner-button-flat {
+  border-radius: 0.75rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1.125rem;
+}
+
+.niner-button-primary-flat {
+  background-color: #EAB308;
+  color: #1F2937;
+  font-weight: 600;
+  border: none;
+}
+
+.niner-button-primary-flat:hover {
+  background-color: #CA8A04;
+  color: #111827;
+}
+
+.niner-button-secondary-flat {
+  background-color: var(--niner-secondary-100);
+  color: var(--niner-secondary-700);
+  border: 1px solid var(--niner-border-light);
+}
+
+.niner-button-secondary-flat:hover {
+  background-color: var(--niner-secondary-200);
+  border-color: var(--niner-border-medium);
+}
+
+.niner-button-outline-flat {
+  background-color: transparent;
+  color: var(--niner-primary-600);
+  border: 2px solid var(--niner-primary-600);
+  padding: 0.625rem 1.375rem;
+}
+
+.niner-button-outline-flat:hover {
+  background-color: var(--niner-primary-50);
+}
+
+/* Compact button for navbar */
+.niner-button-compact {
+  border-radius: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
 }
 
 /* Animation Classes */

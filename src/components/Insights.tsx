@@ -169,7 +169,7 @@ const Insights = () => {
             {displayPosts.slice(0, 3).map((post) => (
               <article
                 key={post.id}
-                className="insight-card group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="insight-card group relative flex flex-col overflow-hidden rounded-lg bg-white border border-gray-200 hover:border-gray-300 transition-all duration-200"
               >
                 <div className="aspect-[16/9] overflow-hidden bg-gray-200">
                   <img

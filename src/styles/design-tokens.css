@@ -146,15 +146,23 @@
   --niner-radius-3xl: 1.5rem;    /* 24px */
   --niner-radius-full: 9999px;
   
-  /* Shadows */
-  --niner-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --niner-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --niner-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --niner-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --niner-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --niner-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --niner-shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  /* Shadows - Flat Design (Minimal) */
+  --niner-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+  --niner-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --niner-shadow-md: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  --niner-shadow-lg: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  --niner-shadow-xl: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  --niner-shadow-2xl: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  --niner-shadow-inner: inset 0 1px 2px 0 rgba(0, 0, 0, 0.02);
   --niner-shadow-none: none;
+  
+  /* Flat Design Specific */
+  --niner-border-light: #e2e8f0;
+  --niner-border-medium: #cbd5e1;
+  --niner-border-dark: #94a3b8;
+  --niner-surface-light: #f8fafc;
+  --niner-surface-white: #ffffff;
+  --niner-surface-dark: #0f172a;
   
   /* Animation Timing */
   --niner-duration-75: 75ms;

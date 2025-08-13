@@ -61,7 +61,7 @@ const SocialProof: React.FC = () => {
   ];
 
   return (
-    <section className="relative py-20 bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden">
+    <section className="relative py-20 bg-white overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute inset-0" style={{
@@ -147,7 +147,7 @@ const SocialProof: React.FC = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="mt-16 bg-gradient-to-br from-gray-900 to-blue-900 rounded-2xl p-12 text-white">
+        <div className="mt-16 bg-gray-900 rounded-lg border border-gray-800 p-12 text-white">
           <div className="text-center mb-10">
             <h3 className="text-3xl md:text-4xl font-bold mb-3">Transforming Political Intelligence</h3>
             <p className="text-gray-300 max-w-3xl mx-auto">

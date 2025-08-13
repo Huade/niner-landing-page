@@ -87,9 +87,8 @@ const Hero: React.FC = memo(() => {
 
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent"></div>
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900">
+      <div className="absolute inset-0 bg-gray-900"></div>
       
       
       <div className="relative z-10 niner-container text-center">
@@ -119,7 +118,7 @@ const Hero: React.FC = memo(() => {
             />
             <button 
               type="submit"
-              className="niner-button niner-button-accent shadow-lg whitespace-nowrap"
+              className="niner-button-flat niner-button-primary-flat whitespace-nowrap"
               aria-label="See AI Polling in Action">
               See AI Polling in Action
             </button>

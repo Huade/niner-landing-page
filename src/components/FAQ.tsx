@@ -57,11 +57,9 @@ const FAQ: React.FC = memo(() => {
           {faqs.map((faq, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-lg overflow-hidden transition-all duration-300" 
-              style={{
-                borderRadius: 'var(--niner-radius-lg)',
-                boxShadow: openIndex === index ? 'var(--niner-shadow-md)' : 'var(--niner-shadow-sm)'
-              }}
+              className={`bg-white rounded-lg overflow-hidden transition-all duration-300 border ${
+                openIndex === index ? 'border-gray-300 bg-gray-50' : 'border-gray-200'
+              }`}
             >
               <button
                 onClick={() => toggleAccordion(index)}

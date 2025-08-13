@@ -158,7 +158,7 @@ const Solution: React.FC = () => {
   const activeTabContent = tabs.find(tab => tab.id === activeTab);
 
   return (
-    <section ref={sectionRef} id="solution" className="niner-section bg-gradient-to-b from-white via-gray-50 to-white">
+    <section ref={sectionRef} id="solution" className="niner-section bg-gray-50">
       <div className="niner-container">
         {/* Header */}
         <div className="text-center mb-12 animate-on-scroll">
@@ -172,7 +172,7 @@ const Solution: React.FC = () => {
         </div>
 
         {/* Tabbed Interface */}
-        <div className="niner-card bg-white overflow-hidden animate-on-scroll" style={{borderRadius: 'var(--niner-radius-2xl)', boxShadow: 'var(--niner-shadow-xl)'}}>
+        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden animate-on-scroll transition-all duration-200 hover:border-gray-300">
           {/* Tab Navigation */}
           <div className="border-b border-gray-200" style={{backgroundColor: 'var(--niner-secondary-50)'}}>
             <nav className="flex flex-wrap">
@@ -239,7 +239,7 @@ const Solution: React.FC = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                       {/* Left Column - Placeholder Image */}
                       <div className="flex justify-center">
-                        <div className="w-full max-w-md bg-gradient-to-br from-blue-50 to-indigo-50 p-8 flex items-center justify-center" style={{borderRadius: 'var(--niner-radius-xl)'}}>
+                        <div className="w-full max-w-md bg-blue-50 p-8 flex items-center justify-center rounded-lg">
                           <svg className="w-full h-48 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={0.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                           </svg>
@@ -280,7 +280,7 @@ const Solution: React.FC = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                       {/* Left Column - Placeholder Image */}
                       <div className="flex justify-center">
-                        <div className="w-full max-w-md bg-gradient-to-br from-blue-50 to-indigo-50 p-8 flex items-center justify-center" style={{borderRadius: 'var(--niner-radius-xl)'}}>
+                        <div className="w-full max-w-md bg-blue-50 p-8 flex items-center justify-center rounded-lg">
                           <svg className="w-full h-48 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={0.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                           </svg>
@@ -338,7 +338,7 @@ const Solution: React.FC = () => {
             </p>
             <a
               href="#contact"
-              className="niner-button niner-button-primary"
+              className="niner-button-flat niner-button-primary-flat inline-flex items-center"
             >
               Request a Demo
               <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
