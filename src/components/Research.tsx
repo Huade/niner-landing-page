@@ -191,8 +191,7 @@ const Results: React.FC = () => {
           {/* Left Timeline for Desktop */}
           <div 
             ref={timelineRef}
-            className="hidden lg:block absolute left-20 top-0 w-0.5 h-full origin-top"
-            className="bg-blue-600"
+            className="hidden lg:block absolute left-20 top-0 w-0.5 h-full origin-top bg-blue-600"
           ></div>
 
           {/* Research Timeline Grid */}

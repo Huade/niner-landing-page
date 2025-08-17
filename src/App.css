@@ -246,6 +246,11 @@
   font-size: 0.95rem;
 }
 
+/* GSAP Hidden State */
+[data-gsap-hidden] {
+  opacity: 0;
+}
+
 /* Animation Classes */
 @keyframes niner-fade-in {
   from {
