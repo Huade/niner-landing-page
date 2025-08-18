@@ -18,9 +18,69 @@
     <meta name="twitter:title" content="Niner Research - AI-Powered Survey Revolution" />
     <meta name="twitter:description" content="Revolutionary AI-powered polling that reaches the 99% who don't respond to traditional surveys." />
     <title>Niner Research - AI-Powered Survey Revolution</title>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload Inter font -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Critical inline CSS to prevent FOUC -->
+    <style>
+      /* Critical CSS - Hide GSAP elements until animation starts */
+      [data-gsap-hidden] {
+        opacity: 0;
+      }
+      
+      /* Loading overlay styles */
+      #loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #111827;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.3s ease;
+      }
+      
+      #loading-overlay.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .loading-spinner {
+        width: 48px;
+        height: 48px;
+        border: 4px solid rgba(234, 179, 8, 0.3);
+        border-top-color: #EAB308;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      
+      /* Base font to prevent font flash */
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      }
+    </style>
   </head>
   <body>
+    <!-- Loading overlay -->
+    <div id="loading-overlay">
+      <div class="loading-spinner"></div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
